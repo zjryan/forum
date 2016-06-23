@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户注册</title>
+    <link href="../static/pure-min.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <h1>用户注册</h1>
+    <form class="pure-form" action="/register" method="POST">
+        <input name="username" class="form-control" placeholder="输入用户名" />
+        <br>
+        <input name="password" class="form-control" type="password" placeholder="输入密码" />
+        <br>
+        <input name="email" class="form-control" placeholder="输入电子邮箱" />
+        <br>
+        <button class="pure-button pure-button-primary" type="submit">注册</button>
+    </form>
+    <p>已有账户，<a href="/login">点击登录</a></p>
+</body>
+</html>

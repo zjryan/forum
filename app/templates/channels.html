@@ -5,8 +5,12 @@
     <title>所有频道</title>
 </head>
 <body>
+    <p>
+        <a href="/login">登录</a>
+        <a href="/register">注册</a>
+    </p>
     {% for c in channels %}
-        <p>{{ c.id }}. {{ c.name }}</p>
+        <p>{{ c.id }}. <a href="/channel/{{ c.id }}">{{ c.name }}</a></p>
     {% endfor %}
 </body>
 </html>
