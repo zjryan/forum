@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>所有帖子</title>
+</head>
+<body>
+    {% for p in posts %}
+        <p>{{ p.id }}. {{ p.content }}</p>
+    {% endfor %}
+</body>
+</html>
