@@ -15,6 +15,8 @@ class User(db.Model, Model):
     password = db.Column(db.String())
     email = db.Column(db.String())
 
+    posts = db.relationship('Post', backref='author')
+
     def __init__(self, form):
         super(User, self).__init__()
         self.username = form.get('username', '')

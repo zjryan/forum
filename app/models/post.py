@@ -9,10 +9,18 @@ from sqlalchemy import sql
 class Post(db.Model, Model):
     __tablename__ = 'posts'
     id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String())
     content = db.Column(db.String())
     created_time = db.Column(db.DateTime(timezone=True),
                              default=sql.func.now())
 
+    channel_id = db.Column(db.Integer, db.ForeignKey('channels.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
     def __init__(self, form):
         super(Post, self).__init__()
+        self.title = form.get('title', '')
         self.content = form.get('content', '')
+
+    def post_valid(self):
+        return self.title != '' and self.content != ''

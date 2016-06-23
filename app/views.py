@@ -4,6 +4,7 @@ from flask import redirect
 from flask import render_template
 from flask import url_for
 from flask import request
+from flask import abort
 
 from .models.channel import Channel
 from .models.post import Post
@@ -27,8 +28,23 @@ def channels():
 @app.route('/channel/<int:id>')
 def channel_view(id):
     channel = Channel.query.get(id)
+    posts = channel.posts
+    posts.sort(key=lambda p: p.created_time, reverse=True)
     return render_template('channel.html',
-                           channel=channel)
+                           channel=channel,
+                           posts=posts)
+
+
+@app.route('/channel/<int:channel_id>/add_post', methods=['POST'])
+def post_add(channel_id):
+    post = Post(request.form)
+    if post.post_valid():
+        post.channel_id = channel_id
+        post.save()
+        log('帖子', post.id, '发送成功')
+    else:
+        log('帖子发送失败')
+    return redirect(url_for('channel_view', id=channel_id))
 
 
 @app.route('/post/list')

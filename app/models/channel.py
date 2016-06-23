@@ -13,6 +13,8 @@ class Channel(db.Model, Model):
     created_time = db.Column(db.DateTime(timezone=True),
                              default=sql.func.now())
 
+    posts = db.relationship('Post', backref='channel')
+
     def __init__(self, form):
         super(Channel, self).__init__()
         self.name = form.get('name', '')

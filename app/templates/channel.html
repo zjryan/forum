@@ -3,8 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ channel.name }}</title>
+    <link href="../static/pure-min.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <h1>这是{{ channel.name }}</h1>
+    <form class="pure-form" action="{{ channel.id }}/add_post" method="POST">
+        <label for="title">标题</label>
+        <br>
+        <input name="title" class="form-control" />
+        <br>
+        <label for="content">内容</label>
+        <br>
+        <input name="content" class="form-control" />
+        <br>
+        <button class="pure-button pure-button-primary">提交</button>
+    </form>
+    <hr>
+    <h2>帖子列表</h2>
+    {% for p in posts %}
+    <p><a href="{{ url_for('post', id=p.id) }}">{{ p.title }}</a> | {{ p.created_time }}</p>
+    {% endfor %}
 </body>
 </html>
