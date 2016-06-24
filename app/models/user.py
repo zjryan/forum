@@ -24,6 +24,7 @@ class User(db.Model, Model):
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
 
     posts = db.relationship('Post', backref='author')
+    comments = db.relationship('Comment', backref='author')
 
     @property
     def password(self):

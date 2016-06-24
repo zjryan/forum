@@ -22,7 +22,7 @@
     {% for p in posts %}
         {% set author_name = p.author.username %}
         <p>
-            <a href="{{ url_for('post', id=p.id) }}">{{ p.title }}</a>
+            <a href="{{ url_for('post_view', id=p.id) }}">{{ p.title }}</a>
             | 作者: <a href="{{ url_for('profile', username=author_name) }}">{{ author_name }}</a>
             | {{ p.created_time }}
         </p>

@@ -8,4 +8,19 @@
         <br>
         <p>{{ post.content }}</p>
     </body>
+    <hr>
+    <h2>回复</h2>
+    {% for c in comments %}
+        <p>
+            {{ c.content }}<br>
+            作者: {{ c.author.username }} | {{ c.created_time }}
+        </p>
+    {% endfor %}
+    <hr>
+    <h2>回复该帖</h2>
+    <form class="pure-form" action="{{ post.id }}/add_comment" method="POST">
+        <input name="content" class="form-control" />
+        <br>
+        <button class="pure-button pure-button-primary">回复</button>
+    </form>
 {% endblock %}

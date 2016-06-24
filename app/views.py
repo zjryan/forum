@@ -11,6 +11,7 @@ from flask import flash
 from .models.channel import Channel
 from .models.post import Post
 from .models.user import User
+from .models.comment import Comment
 from .models.user import current_user
 from .utilities import log
 from app import app
@@ -61,11 +62,35 @@ def posts():
                            posts=posts)
 
 
-@app.route('/post/<int:id>')
-def post(id):
+@app.route('/post/<int:id>', methods=['GET'])
+def post_view(id):
     post = Post.query.get(id)
+    if post is None:
+        abort(404)
+    comments = post.comments
+    comments.sort(key=lambda c: c.created_time, reverse=True)
     return render_template('post.html',
-                           post=post)
+                           post=post,
+                           comments=comments)
+
+
+@app.route('/post/<int:post_id>/add_comment', methods=['POST'])
+def add_comment(post_id):
+    post = Post.query.get(post_id)
+    if post is None:
+        abort(404)
+    comment = Comment(request.form)
+    user = current_user()
+    if comment.comment_valid() and user is not None:
+        comment.set_author(user.id)
+        comment.set_post(post_id)
+        comment.save()
+        log('回复成功 作者:', comment.author.username)
+        flash('回复成功')
+    else:
+        log('回复失败')
+        flash('回复失败')
+    return redirect(url_for('post_view', id=post_id))
 
 
 @app.route('/login', methods=['GET'])

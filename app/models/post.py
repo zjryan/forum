@@ -17,6 +17,8 @@ class Post(db.Model, Model):
     channel_id = db.Column(db.Integer, db.ForeignKey('channels.id'))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
+    comments = db.relationship('Comment', backref='post')
+
     def __init__(self, form):
         super(Post, self).__init__()
         self.title = form.get('title', '')
