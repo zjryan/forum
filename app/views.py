@@ -4,6 +4,7 @@ from flask import redirect
 from flask import render_template
 from flask import url_for
 from flask import request
+from flask import session
 from flask import abort
 
 from .models.channel import Channel
@@ -72,6 +73,7 @@ def login():
     user = User.query.filter_by(username=username).first()
     if user.login_valid(request.form):
         log(user.username, '登录成功')
+        session['user_key'] = user.id
         return redirect(url_for('channels'))
     else:
         log(user.username, '登录失败')

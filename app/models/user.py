@@ -6,8 +6,8 @@ from ..utilities import email_validate
 from ..utilities import generate_password_hash
 from ..utilities import check_password_hash
 
-import hashlib
 from sqlalchemy import sql
+from flask import session
 
 
 class User(db.Model, Model):
@@ -62,3 +62,15 @@ class User(db.Model, Model):
                password_len and \
                username_len
 
+
+def current_user():
+    #try:
+        #id = session['user_key']
+    id = session.get('user_key', None)
+    #except KeyError:
+    #    id = None
+
+    user = None
+    if id is not None:
+        user = User.query.get(id)
+    return user
