@@ -20,11 +20,18 @@
     <hr>
     <h2>帖子列表</h2>
     {% for p in posts %}
+<<<<<<< HEAD
     <p>
         <a href="{{ url_for('post', id=p.id) }}">{{ p.title }}</a>
         {% set author_name = p.author.username %}
         | 作者: <a href="{{ url_for('profile', username=author_name) }}">{{ author_name }}</a>
         | {{ p.created_time }}
     </p>
+=======
+    <p><a href="{{ url_for('post', id=p.id) }}">{{ p.title }}</a>
+        {% set author_name = p.author.username %}
+        | 作者: <a href="{{ url_for('profile', username=author_name) }}">{{ author_name }}</a>
+        | {{ p.created_time }}</p>
+>>>>>>> 52f79a60f85e4ed8ccc4fb5c8b03a36bc909d099
     {% endfor %}
 {% endblock %}
