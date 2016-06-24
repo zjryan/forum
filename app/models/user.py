@@ -4,7 +4,6 @@ from . import Model
 from . import db
 from ..utilities import email_validate
 
-import string
 from sqlalchemy import sql
 
 
@@ -14,6 +13,8 @@ class User(db.Model, Model):
     username = db.Column(db.String(), unique=True)
     password = db.Column(db.String())
     email = db.Column(db.String())
+    created_time = db.Column(db.DateTime(timezone=True),
+                             default=sql.func.now())
 
     posts = db.relationship('Post', backref='author')
 

@@ -24,3 +24,9 @@ class Post(db.Model, Model):
 
     def post_valid(self):
         return self.title != '' and self.content != ''
+
+    def set_channel(self, channel_id):
+        self.channel_id = channel_id
+
+    def set_author(self, user_id):
+        self.user_id = user_id

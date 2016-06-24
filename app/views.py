@@ -39,7 +39,7 @@ def channel_view(id):
 def post_add(channel_id):
     post = Post(request.form)
     if post.post_valid():
-        post.channel_id = channel_id
+        post.set_channel(channel_id)
         post.save()
         log('帖子', post.id, '发送成功')
     else:
