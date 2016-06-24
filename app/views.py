@@ -68,9 +68,9 @@ def login_view():
 
 @app.route('/login', methods=['POST'])
 def login():
-    u = User(request.form)
-    user = User.query.filter_by(username=u.username).first()
-    if user.login_valid(u):
+    username = request.form.get('username', '')
+    user = User.query.filter_by(username=username).first()
+    if user.login_valid(request.form):
         log(user.username, '登录成功')
         return redirect(url_for('channels'))
     else:

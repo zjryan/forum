@@ -2,6 +2,7 @@
 
 import datetime
 import string
+import hashlib
 
 
 def log(*args):
@@ -37,7 +38,20 @@ def email_validate(email):
             is_legal(realm)
 
 
-def test():
+encoding = 'utf-8'
+
+
+def generate_password_hash(password):
+    p = password.encode(encoding)
+    return hashlib.sha1(p).hexdigest()
+
+
+def check_password_hash(password_hash, password):
+    hash = generate_password_hash(password)
+    return password_hash == hash
+
+
+def test_email_validate():
     test_item = [
         ('12345@qq.com', True),
         ('s2324hads@11', False),
@@ -53,5 +67,22 @@ def test():
             'assert error, email: {} || expect: {} || actual: {}'.format(email, expect, actual)
 
 
+def test_password_hash():
+    test_item = [
+        (('dog', 'dog'), True),
+        (('dog', 'cat'), False),
+        (('', ''), True),
+        (('safdfadgavczfgdzgsrtrgsfgvb', 'afdavbf'), False),
+        (('faferb', ''), False),
+    ]
+    for t in test_item:
+        password, expect = t
+        password_hash = generate_password_hash(password[0])
+        actual = check_password_hash(password_hash, password[1])
+        assert actual == expect, \
+            'assert error, password: {} || expect: {} || actual: {}'.format(password, expect, actual)
+
+
 if __name__ == '__main__':
-    test()
+    test_password_hash()
+    test_email_validate()
