@@ -2,6 +2,7 @@
 
 from . import Model
 from . import db
+from .role import Role
 from ..utilities import email_validate
 from ..utilities import generate_password_hash
 from ..utilities import check_password_hash
@@ -15,9 +16,11 @@ class User(db.Model, Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(), unique=True)
     password_hash = db.Column(db.String())
-    email = db.Column(db.String())
+    email = db.Column(db.String(), unique=True)
     created_time = db.Column(db.DateTime(timezone=True),
                              default=sql.func.now())
+
+    role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
 
     posts = db.relationship('Post', backref='author')
 
@@ -37,6 +40,7 @@ class User(db.Model, Model):
         self.username = form.get('username', '')
         self.password = form.get('password', '')
         self.email = form.get('email', '')
+        self.set_user_role()
 
     def login_valid(self, form):
         username = form.get('username', '')
@@ -52,15 +56,22 @@ class User(db.Model, Model):
         email = form.get('email', '')
 
         user_exists = User.query.filter_by(username=username).first()
+        email_exists = User.query.filter_by(email=email).first()
         username_len = len(username) >= 3
         password_len = len(password) >= 3
         email_valid = email_validate(email)
 
         return not user_exists and \
+               not email_exists and \
                email_valid and \
                password == password2 and \
                password_len and \
                username_len
+
+    def set_user_role(self):
+        if self.role_id is None:
+            role = Role.query.filter_by(default=True).first()
+            self.role_id = role.id
 
 
 def current_user():
