@@ -105,3 +105,11 @@ def register():
         log('用户注册失败')
         return redirect(url_for('register_view'))
 
+
+@app.route('/profile/<username>')
+def profile(username):
+    u = User.query.filter_by(username=username).first()
+    if u is None:
+        abort(404)
+    return render_template('profile.html', user=u)
+
