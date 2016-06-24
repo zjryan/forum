@@ -11,7 +11,10 @@
             <a href="/register">注册</a>
         </p>
     {% else %}
-        <p>欢迎，{{ current_user.username }}</p>
+        <p>
+            欢迎，{{ current_user.username }}
+            <a href="/logout">登出用户</a>
+        </p>
     {% endif %}
 
     {% for c in channels %}

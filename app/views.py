@@ -80,6 +80,12 @@ def login():
         return redirect(url_for('login_view'))
 
 
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('channels'))
+
+
 @app.route('/register', methods=['GET'])
 def register_view():
     return render_template('register.html')
