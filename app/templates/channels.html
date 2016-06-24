@@ -3,6 +3,7 @@
 {% block title %} 所有频道 {% endblock %}
 
 {% block page_content %}
+    <h1>频道列表</h1>
     {% for c in channels %}
         <p>{{ c.id }}. <a href="/channel/{{ c.id }}">{{ c.name }}</a></p>
     {% endfor %}
