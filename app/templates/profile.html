@@ -6,4 +6,12 @@
     <h1>{{ user.username }}- 用户资料</h1>
     <p>性    别: </p>
     <p>个性签名: </p>
+    <hr>
+    <h2>他的动态</h2>
+    {% for a in activities %}
+        <p>
+            {{ user.username }} 于 {{ a.created_time }} 发表了<br>
+            {{ a.content }}
+        </p>
+    {% endfor %}
 {% endblock %}

@@ -143,5 +143,11 @@ def profile(username):
     u = User.query.filter_by(username=username).first()
     if u is None:
         abort(404)
-    return render_template('profile.html', user=u)
+    posts = u.posts
+    comments = u.comments
+    activities = posts + comments
+    activities.sort(key=lambda a: a.created_time, reverse=True)
+    return render_template('profile.html',
+                           user=u,
+                           activities=activities)
 
