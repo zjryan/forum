@@ -1,24 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>所有频道</title>
-</head>
-<body>
-    {% if current_user is none %}
-        <p>
-            <a href="/login">登录</a>
-            <a href="/register">注册</a>
-        </p>
-    {% else %}
-        <p>
-            欢迎，{{ current_user.username }}
-            <a href="/logout">登出用户</a>
-        </p>
-    {% endif %}
+{% extends 'base.html' %}
 
+{% block title %} 所有频道 {% endblock %}
+
+{% block page_content %}
     {% for c in channels %}
         <p>{{ c.id }}. <a href="/channel/{{ c.id }}">{{ c.name }}</a></p>
     {% endfor %}
-</body>
-</html>
+{% endblock %}

@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ channel.name }}</title>
-    <link href="../static/pure-min.css" rel="stylesheet" type="text/css" />
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}{{ channel.name }}{% endblock %}
+
+{% block page_content %}
     <h1>这是{{ channel.name }}</h1>
     {% if current_user is not none %}
     <form class="pure-form" action="{{ channel.id }}/add_post" method="POST">
@@ -25,5 +22,4 @@
     {% for p in posts %}
     <p><a href="{{ url_for('post', id=p.id) }}">{{ p.title }}</a> | {{ p.created_time }}</p>
     {% endfor %}
-</body>
-</html>
+{% endblock %}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %}</title>
+    {% block head %}
+    <link href="../static/pure-min.css" rel="stylesheet" type="text/css" />
+    {% endblock %}
+</head>
+<body>
+    {% block navbar %}
+        <p>
+        <a href="/">首页</a> |
+        {% if current_user is none %}
+            <a href="/login">登录</a> |
+            <a href="/register">注册</a> |
+        {% else %}
+            欢迎，{{ current_user.username }}
+            <a href="/logout">登出用户</a> |
+        {% endif %}
+        </p>
+        <hr>
+    {% endblock %}
+
+    {% block content %}
+
+    {% block page_content %}{% endblock %}
+
+    {% endblock %}
+</body>
+</html>

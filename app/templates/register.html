@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>用户注册</title>
-    <link href="../static/pure-min.css" rel="stylesheet" type="text/css" />
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}用户注册{% endblock %}
+
+{% block page_content %}
     <h1>用户注册</h1>
     <form class="pure-form" action="/register" method="POST">
         <input name="username" class="form-control" placeholder="输入用户名" />
@@ -19,5 +16,4 @@
         <button class="pure-button pure-button-primary" type="submit">注册</button>
     </form>
     <p>已有账户，<a href="/login">点击登录</a></p>
-</body>
-</html>
+{% endblock %}
