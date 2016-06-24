@@ -48,6 +48,7 @@ class User(db.Model, Model):
     def register_valid(form):
         username = form.get('username', '')
         password = form.get('password', '')
+        password2 = form.get('password2', '')
         email = form.get('email', '')
 
         user_exists = User.query.filter_by(username=username).first()
@@ -55,5 +56,9 @@ class User(db.Model, Model):
         password_len = len(password) >= 3
         email_valid = email_validate(email)
 
-        return not user_exists and email_valid and password_len and username_len
+        return not user_exists and \
+               email_valid and \
+               password == password2 and \
+               password_len and \
+               username_len
 
