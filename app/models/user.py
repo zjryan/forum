@@ -64,11 +64,7 @@ class User(db.Model, Model):
 
 
 def current_user():
-    #try:
-        #id = session['user_key']
     id = session.get('user_key', None)
-    #except KeyError:
-    #    id = None
 
     user = None
     if id is not None:

@@ -10,6 +10,7 @@ from flask import abort
 from .models.channel import Channel
 from .models.post import Post
 from .models.user import User
+from .models.user import current_user
 from .utilities import log
 from app import app
 
@@ -39,10 +40,12 @@ def channel_view(id):
 @app.route('/channel/<int:channel_id>/add_post', methods=['POST'])
 def post_add(channel_id):
     post = Post(request.form)
+    user = current_user()
     if post.post_valid():
         post.set_channel(channel_id)
+        post.set_author(user.id)
         post.save()
-        log('帖子', post.id, '发送成功')
+        log('帖子', post.id, '标题:' ,post.title , '发送成功 作者:', post.author.username)
     else:
         log('帖子发送失败')
     return redirect(url_for('channel_view', id=channel_id))
