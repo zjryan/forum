@@ -3,6 +3,7 @@
 from . import Model
 from . import db
 from .role import Role
+from .role import Permission
 from ..utilities import email_validate
 from ..utilities import generate_password_hash
 from ..utilities import check_password_hash
@@ -72,6 +73,18 @@ class User(db.Model, Model):
         if self.role_id is None:
             role = Role.query.filter_by(default=True).first()
             self.role_id = role.id
+
+    def is_admin(self):
+        return self.role.permissions == Permission.ADMINISTER
+
+    def can_read(self):
+        return self.role.permissions & Permission.READ
+
+    def can_comment(self):
+        return self.role.permissions & Permission.COMMENT
+
+    def can_write_post(self):
+        return self.role.permissions & Permission.WRITE_POSTS
 
 
 def current_user():
