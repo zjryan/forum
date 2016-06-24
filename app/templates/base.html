@@ -23,9 +23,10 @@
     {% endblock %}
 
     {% block content %}
-
-    {% block page_content %}{% endblock %}
-
+        {% for msg in get_flashed_messages() %}
+            <p>{{ msg }}</p>
+        {% endfor %}
+        {% block page_content %}{% endblock %}
     {% endblock %}
 </body>
 </html>

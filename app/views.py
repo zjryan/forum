@@ -6,6 +6,7 @@ from flask import url_for
 from flask import request
 from flask import session
 from flask import abort
+from flask import flash
 
 from .models.channel import Channel
 from .models.post import Post
@@ -46,8 +47,10 @@ def post_add(channel_id):
         post.set_author(user.id)
         post.save()
         log('帖子', post.id, '标题:' ,post.title , '发送成功 作者:', post.author.username)
+        flash('帖子发送成功')
     else:
         log('帖子发送失败')
+        flash('帖子发送失败')
     return redirect(url_for('channel_view', id=channel_id))
 
 
@@ -76,10 +79,12 @@ def login():
     user = User.query.filter_by(username=username).first()
     if user.login_valid(request.form):
         log(user.username, '登录成功')
+        flash('用户登录成功')
         session['user_key'] = user.id
         return redirect(url_for('channels'))
     else:
         log(user.username, '登录失败')
+        flash('用户登录失败')
         return redirect(url_for('login_view'))
 
 
@@ -100,9 +105,11 @@ def register():
         user = User(request.form)
         user.save()
         log(user.username, '用户注册成功')
+        flash('用户注册成功')
         return redirect(url_for('login_view'))
     else:
         log('用户注册失败')
+        flash('用户注册失败')
         return redirect(url_for('register_view'))
 
 
