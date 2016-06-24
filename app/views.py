@@ -52,7 +52,8 @@ def post_add(channel_id):
     else:
         log('帖子发送失败')
         flash('帖子发送失败')
-    return redirect(url_for('channel_view', id=channel_id))
+    return redirect(url_for('channel_view',
+                            id=channel_id))
 
 
 @app.route('/post/list')
@@ -102,13 +103,13 @@ def login_view():
 def login():
     username = request.form.get('username', '')
     user = User.query.filter_by(username=username).first()
-    if user.login_valid(request.form):
+    if user is not None and user.login_valid(request.form):
         log(user.username, '登录成功')
         flash('用户登录成功')
         session['user_key'] = user.id
         return redirect(url_for('channels'))
     else:
-        log(user.username, '登录失败')
+        log('用户登录失败')
         flash('用户登录失败')
         return redirect(url_for('login_view'))
 

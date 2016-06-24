@@ -32,3 +32,12 @@ class Post(db.Model, Model):
 
     def set_author(self, user_id):
         self.user_id = user_id
+
+    def display_item(self):
+        name = 'post'
+        title = self.title
+        if self.content.__len__() > 30:
+            content = self.content[:30] + '...'
+        else:
+            content = self.content
+        return (name, title, content)

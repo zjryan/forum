@@ -28,3 +28,11 @@ class Comment(db.Model, Model):
 
     def set_post(self, post_id):
         self.post_id = post_id
+
+    def display_item(self):
+        name = 'comment'
+        if self.content.__len__() > 30:
+            content = self.content[:30] + '...'
+        else:
+            content = self.content
+        return (name, content)

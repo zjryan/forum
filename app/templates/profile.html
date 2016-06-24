@@ -3,15 +3,28 @@
 {% block title %}{{ user.username }}- 用户资料{% endblock %}
 
 {% block page_content %}
-    <h1>{{ user.username }}- 用户资料</h1>
+    <h1>{{ user.username }} - 用户资料</h1>
     <p>性    别: </p>
     <p>个性签名: </p>
     <hr>
     <h2>他的动态</h2>
     {% for a in activities %}
         <p>
-            {{ user.username }} 于 {{ a.created_time }} 发表了<br>
-            {{ a.content }}
+            {{ user.username }} 于 {{ a.created_time }} 发表了
+            {% set item = a.display_item() %}
+            {% set name = item[0] %}
+            {% if name == 'post' %}
+                {% set title = item[1] %}
+                {% set content = item[2] %}
+                帖子<br><a href="/post/{{ a.id }}">{{ title }}</a><br>
+                {{ content }}
+            {% elif name == 'comment' %}
+                {% set content = item[1] %}
+                评论<br><a href="/post/{{ a.post.id }}">{{ content }}</a>
+            {% endif %}
+            <br>
+            <a href="#">删除</a> |
+            <a href="#">编辑</a> |
         </p>
     {% endfor %}
 {% endblock %}
