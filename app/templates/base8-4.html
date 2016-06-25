@@ -7,20 +7,21 @@
             {% include "_flashed_msg.html" %}
             {% block page_content %}{% endblock %}
         </div>
-        {% block page_side %}
         <div class="col-md-4">
+        {% block page_side %}
             {% if current_user is not none %}
             <img class="img-rounded center-block" alt="140x140" src="../static/img/default_img.png" />
-            <div class="row">
-                <div class="col-md-4 center-block">
-                关注了<br>0 人</div>
-                <div class="col-md-4 center-block">
-                关注者<br>0 人</div>
+            <div class="row follow-count">
                 <div class="col-md-4">
                 </div>
+                <div class="col-md-4">
+                关注了<br>0 人</div>
+                <div class="col-md-4">
+                关注者<br>0 人</div>
             </div>
             {% endif %}
-            <div class="row">
+        {% endblock %}
+            <div class="row channel-list">
                 <div class="col-md-12">
                     <h3>所有频道</h3>
                     <ul class="list-group">
@@ -31,7 +32,6 @@
                 </div>
             </div>
         </div>
-        {% endblock %}
         </div>
     </div>
 {% endblock %}
