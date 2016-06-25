@@ -43,46 +43,7 @@
     </div>
     {% endblock %}
 
-    {% block content %}
-        <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                {% for msg in get_flashed_messages() %}
-                <div class="alert {% if '成功' in msg %}alert-success{% elif '失败' in msg %}alert-danger{% else %}alert-warning{% endif %}">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    {{ msg }}
-                </div>
-                {% endfor %}
-                {% block page_content %}{% endblock %}
-            </div>
-            {% block page_side %}
-            <div class="col-md-4">
-                {% if current_user is not none %}
-                <img class="img-rounded center-block" alt="140x140" src="../static/img/default_img.png" />
-                <div class="row">
-                    <div class="col-md-4 center-block">
-                    关注了<br>0 人</div>
-                    <div class="col-md-4 center-block">
-                    关注者<br>0 人</div>
-                    <div class="col-md-4">
-                    </div>
-                </div>
-                {% endif %}
-                <div class="row">
-                    <div class="col-md-12">
-                        <h3>所有频道</h3>
-                        <ul class="list-group">
-                            {% for c in channels %}
-                            <li class="list-group-item"><a href="/channel/{{ c.id }}">{{ c.name }}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            {% endblock %}
-            </div>
-        </div>
-
+    {% block content%}
     {% endblock %}
 </body>
 </html>

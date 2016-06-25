@@ -109,7 +109,7 @@ def login():
         log(user.username, '登录成功')
         flash('用户登录成功')
         session['user_key'] = user.id
-        return redirect(url_for('channels'))
+        return redirect(url_for('index'))
     else:
         log('用户登录失败')
         flash('用户登录失败')
@@ -119,7 +119,7 @@ def login():
 @app.route('/logout')
 def logout():
     session.clear()
-    return redirect(url_for('channels'))
+    return redirect(url_for('index'))
 
 
 @app.route('/register', methods=['GET'])
