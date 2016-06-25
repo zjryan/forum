@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base8-4.html' %}
 
 {% block title %}{{ channel.name }}{% endblock %}
 
@@ -19,20 +19,5 @@
     {% endif %}
     <hr>
     <h2>帖子列表</h2>
-    {% for p in posts %}
-        {% set author_name = p.author.username %}
-        <p>
-            <a href="{{ url_for('post_view', id=p.id) }}">{{ p.title }}</a>
-            | 作者: <a href="{{ url_for('profile', username=author_name) }}">{{ author_name }}</a>
-            | {{ p.created_time }}
-        </p>
-        {% set content = p.content %}
-        {% set content_len = content.__len__() %}
-        {% if content_len > 20 %}
-            {% set content = content[:20] + '...' %}
-        {% endif %}
-        <p>
-            {{ content }}
-        </p>
-    {% endfor %}
+    {% include "_posts.html" %}
 {% endblock %}

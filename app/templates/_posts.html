@@ -1,0 +1,22 @@
+<ul class="posts">
+    {% for post in posts %}
+        <li class="post">
+            {% set post_author = post.author.username %}
+            {% set post_channel = post.channel.name %}
+            {% set item = post.display_item() %}
+            {% set post_title = item[1] %}
+            {% set post_content = item[2] %}
+            <div class="post-content">
+                <p>{{ post_author }} 在 {{ post_channel }} 内发表了</p>
+                <p><a href="{{ url_for('post_view', id=post.id) }}">{{ post_title }}</a></p>
+                <p>{{ post_content }}</p>
+                <br>
+                <p class="post-attr">
+                    <a href="{{ url_for('profile', username=post_author) }}">
+                        {{ post_author }}
+                    </a> | {{ post.created_time }}
+                </p><br>
+            </div>
+        </li>
+    {% endfor %}
+</ul>

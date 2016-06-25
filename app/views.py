@@ -20,6 +20,7 @@ from app import app
 @app.route('/')
 def index():
     posts = Post.query.all()
+    posts.sort(key=lambda p: p.created_time, reverse=True)
     return render_template('index.html',
                            posts=posts)
 
