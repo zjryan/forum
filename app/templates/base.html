@@ -5,6 +5,7 @@
     <title>{% block title %} {% endblock %}</title>
     {% block head %}
     <link href="../static/pure-min.css" rel="stylesheet" type="text/css" />
+    <link href="../static/bootstrap.css" rel="stylesheet" type="text/css" />
     {% endblock %}
 </head>
 <body>
@@ -23,10 +24,37 @@
     {% endblock %}
 
     {% block content %}
-        {% for msg in get_flashed_messages() %}
-            <p>{{ msg }}</p>
-        {% endfor %}
-        {% block page_content %}{% endblock %}
+        <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span8">
+                {% for msg in get_flashed_messages() %}
+                <div class="alert {% if '成功' in msg %}alert-success{% elif '失败' in msg %}alert-danger{% else %}alert-warning{% endif %}">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{ msg }}
+                </div>
+                {% endfor %}
+                {% block page_content %}{% endblock %}
+            </div>
+            {% block page_side %}
+            <div class="span4">
+                <img class="img-rounded" alt="140x140" src="#" />
+                <div class="row-fluid">
+                    <div class="span4">
+                    </div>
+                    <div class="span4">
+                    </div>
+                    <div class="span4">
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span12">
+                    </div>
+                </div>
+            </div>
+            {% endblock %}
+            </div>
+        </div>
+
     {% endblock %}
 </body>
 </html>
