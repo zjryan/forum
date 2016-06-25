@@ -67,6 +67,9 @@ def delete_post(id):
     author = p.author
     user = current_user()
     if author is user or user.is_admin():
+        comments = p.comments
+        for c in comments:
+            c.delete()
         p.delete()
         log('删除帖子成功')
         flash('删除帖子成功')

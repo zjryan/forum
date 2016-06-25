@@ -8,32 +8,7 @@
     <p>个性签名: </p>
     <hr>
     <h2>他的动态</h2>
-    {% for a in activities %}
-        <p>
-            {{ user.username }} 于 {{ a.created_time }} 发表了
-            {% set item = a.display_item() %}
-            {% set name = item[0] %}
-            {% if name == 'post' %}
-                {% set title = item[1] %}
-                {% set content = item[2] %}
-                帖子<br><a href="/post/{{ a.id }}">{{ title }}</a><br>
-                {{ content }}
-                <br>
-                {% if current_user == user or current_user.is_admin() %}
-                <a href="{{ url_for('delete_post', id=a.id) }}">删除</a> |
-                <a href="#">编辑</a> |
-                {% endif %}
-            {% elif name == 'comment' %}
-                {% set content = item[1] %}
-                评论<br><a href="/post/{{ a.post.id }}">{{ content }}</a>
-                <br>
-                {% if current_user == user or current_user.is_admin() %}
-                <a href="#">删除</a> |
-                <a href="#">编辑</a> |
-                {% endif %}
-            {% endif %}
-        </p>
-    {% endfor %}
+    {% include "_activities.html" %}
 {% endblock %}
 
 {% block page_side %}

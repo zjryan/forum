@@ -1,0 +1,37 @@
+<ul class="activities">
+    {% for a in activities %}
+    <li class="activity">
+        {% set item = a.display_item() %}
+        {% set item_name = item[0] %}
+        <blockquote>
+        <div class="activity-content">
+            {% if item_name == 'post' %}
+                {% set title = item[1] %}
+                {% set content = item[2] %}
+                <div class="activity-header">发表了帖子</div>
+                <div class="activity-date">{{ a.created_time }}</div><br>
+                <div class="post-title"><a href="{{ url_for('post_view', id=a.id) }}">{{ title }}</a></div>
+                <p>{{ content }}</p>
+                <div class="activity-footer">
+                    {% if current_user == user or current_user.is_admin() %}
+                    <a href="{{ url_for('delete_post', id=a.id) }}">删除</a> |
+                    <a href="#">编辑</a>
+                    {% endif %}
+                </div>
+            {% elif item_name == 'comment' %}
+                {% set content = item[1] %}
+                <div class="activity-header">发表了评论</div>
+                <div class="activity-date">{{ a.created_time }}</div><br>
+                <p><a href="/post/{{ a.post.id }}">{{ content }}</a></p>
+                <div class="activity-footer">
+                    {% if current_user == user or current_user.is_admin() %}
+                    <a href="#">删除</a> |
+                    <a href="#">编辑</a>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+        </blockquote>
+    </li>
+    {% endfor %}
+</ul>

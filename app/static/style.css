@@ -196,9 +196,40 @@ p.post-title {
 }
 
 div.channel-list {
-    margin-top: 30px
+    margin-top: 30px;
 }
 
 div.follow-count {
-    margin-top: 25px
+    margin-top: 25px;
+}
+
+ul.activities {
+    list-style-type: none;
+    padding: 0px;
+    margin: 16px 0px 0px 0px;
+}
+
+ul.activities li.activity {
+    padding: 8px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+ul.activities li.activity:nth-child(1) {
+    border-top: 1px solid #e0e0e0;
+}
+
+ul.activities li.activity:hover {
+    background-color: #f0f0f0;
+}
+
+div.activity-header {
+    font-weight: bold;
+}
+
+div.activity-date {
+    float: right;
+}
+
+div.activity-footer {
+    float: right
 }
