@@ -57,15 +57,17 @@
             </div>
             {% block page_side %}
             <div class="col-md-4">
-                <img class="img-rounded" alt="140x140" src="../static/img/default_img.png" />
+                {% if current_user is not none %}
+                <img class="img-rounded center-block" alt="140x140" src="../static/img/default_img.png" />
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-4 center-block">
                     关注了<br>0 人</div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 center-block">
                     关注者<br>0 人</div>
                     <div class="col-md-4">
                     </div>
                 </div>
+                {% endif %}
                 <div class="row">
                     <div class="col-md-12">
                         <h3>所有频道</h3>
