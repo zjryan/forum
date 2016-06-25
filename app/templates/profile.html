@@ -1,6 +1,6 @@
-{% extends 'base.html' %}
+{% extends 'base8-4.html' %}
 
-{% block title %}{{ user.username }}- 用户资料{% endblock %}
+{% block title %}{{ user.username }} - 用户资料{% endblock %}
 
 {% block page_content %}
     <h1>{{ user.username }} - 用户资料</h1>
@@ -18,13 +18,17 @@
                 {% set content = item[2] %}
                 帖子<br><a href="/post/{{ a.id }}">{{ title }}</a><br>
                 {{ content }}
+                <br>
+                <a href="{{ url_for('delete_post', id=a.id) }}">删除</a> |
+                <a href="#">编辑</a> |
             {% elif name == 'comment' %}
                 {% set content = item[1] %}
                 评论<br><a href="/post/{{ a.post.id }}">{{ content }}</a>
+                <br>
+                <a href="#">删除</a> |
+                <a href="#">编辑</a> |
             {% endif %}
-            <br>
-            <a href="#">删除</a> |
-            <a href="#">编辑</a> |
+
         </p>
     {% endfor %}
 {% endblock %}

@@ -28,7 +28,7 @@
                             {{ current_user.username }}<b class="caret"></b>
                         </a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">我的主页</a></li>
+                                <li><a href="{{ url_for('profile', username=current_user.username) }}">我的主页</a></li>
                                 <li class="divider"></li>
                                 <li><a href="/logout">退出登录</a></li>
                             </ul>

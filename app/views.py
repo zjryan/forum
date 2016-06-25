@@ -59,6 +59,23 @@ def post_add(channel_id):
                             id=channel_id))
 
 
+@app.route('/post/delete/<int:id>')
+def delete_post(id):
+    p = Post.query.get(id)
+    if p is None:
+        abort(404)
+    author = p.author
+    user = current_user()
+    if author is user or user.is_admin():
+        p.delete()
+        log('删除帖子成功')
+        flash('删除帖子成功')
+        return redirect(request.args.get('next') \
+                        or request.referrer \
+                        or url_for('index'))
+
+
+
 @app.route('/post/list')
 def posts():
     posts = Post.query.all()
