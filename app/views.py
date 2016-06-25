@@ -19,7 +19,9 @@ from app import app
 
 @app.route('/')
 def index():
-    return redirect(url_for('channels'))
+    posts = Post.query.all()
+    return render_template('index.html',
+                           posts=posts)
 
 
 @app.route('/channel/list')

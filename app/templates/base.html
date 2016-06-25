@@ -57,17 +57,23 @@
             </div>
             {% block page_side %}
             <div class="col-md-4">
-                <img class="img-rounded" alt="140x140" src="#" />
+                <img class="img-rounded" alt="140x140" src="../static/img/default_img.png" />
                 <div class="row">
                     <div class="col-md-4">
-                    </div>
+                    关注了<br>0 人</div>
                     <div class="col-md-4">
-                    </div>
+                    关注者<br>0 人</div>
                     <div class="col-md-4">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
+                        <h3>所有频道</h3>
+                        <ul class="list-group">
+                            {% for c in channels %}
+                            <li class="list-group-item"><a href="/channel/{{ c.id }}">{{ c.name }}</a></li>
+                            {% endfor %}
+                        </ul>
                     </div>
                 </div>
             </div>
