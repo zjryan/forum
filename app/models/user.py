@@ -76,7 +76,7 @@ class User(db.Model, Model):
             self.role_id = role.id
 
     def is_admin(self):
-        return self.role.permissions == Permission.ADMINISTER
+        return self.role.permissions == 0xff
 
     def can_read(self):
         return self.role.permissions & Permission.READ

@@ -2,6 +2,7 @@
 
 from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
+from flask.ext.script import Manager
 
 import time
 import shutil
@@ -16,6 +17,7 @@ db_path = 'models.db'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///{}'.format(db_path)
 
 db = SQLAlchemy(app)
+manager = Manager(app)
 
 
 class Model(object):

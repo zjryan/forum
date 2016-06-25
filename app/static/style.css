@@ -127,7 +127,7 @@ ul.comments li.comment:hover {
     background-color: #f0f0f0;
 }
 
-div.comment-date {
+div.comment-footer {
     float: right;
 }
 
@@ -189,4 +189,8 @@ div.flask-pagedown-preview h3 {
 
 p.post-attr {
     float: right
+}
+
+p.post-title {
+    font-size: 140%
 }

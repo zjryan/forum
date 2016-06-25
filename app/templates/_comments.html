@@ -1,0 +1,19 @@
+<ul class="comments">
+    {% for c in comments %}
+        <li class="comment">
+            {% set author = c.author.username %}
+            {% set item = c.display_item() %}
+            {% set content = item[1] %}
+            {% set created_time = c.created_time %}
+            <div class="comment-info">
+                {{ author }}
+            </div>
+            <div class="comment-content">
+                <p>{{ content }}</p>
+                <div class="comment-footer">
+                    {{ created_time }}
+                </div>
+            </div>
+        </li>
+    {% endfor %}
+</ul>

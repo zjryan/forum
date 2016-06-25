@@ -89,7 +89,7 @@ def post_view(id):
     if post is None:
         abort(404)
     comments = post.comments
-    comments.sort(key=lambda c: c.created_time, reverse=True)
+    comments.sort(key=lambda c: c.created_time)
     return render_template('post.html',
                            post=post,
                            comments=comments)

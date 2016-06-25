@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base8-4.html' %}
 
 {% block title %} 帖子 - {{ post.title }}{% endblock %}
 
@@ -10,13 +10,7 @@
     </body>
     <hr>
     <h2>回复</h2>
-    {% for c in comments %}
-        <p>
-            {{ c.content }}<br>
-            作者: {{ c.author.username }} | {{ c.created_time }}
-        </p>
-    {% endfor %}
-    <hr>
+    {% include "_comments.html" %}
     <h2>回复该帖</h2>
     <form class="pure-form" action="{{ post.id }}/add_comment" method="POST">
         <input name="content" class="form-control" />

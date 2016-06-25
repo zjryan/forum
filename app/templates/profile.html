@@ -19,16 +19,19 @@
                 帖子<br><a href="/post/{{ a.id }}">{{ title }}</a><br>
                 {{ content }}
                 <br>
+                {% if current_user == user or current_user.is_admin() %}
                 <a href="{{ url_for('delete_post', id=a.id) }}">删除</a> |
                 <a href="#">编辑</a> |
+                {% endif %}
             {% elif name == 'comment' %}
                 {% set content = item[1] %}
                 评论<br><a href="/post/{{ a.post.id }}">{{ content }}</a>
                 <br>
+                {% if current_user == user or current_user.is_admin() %}
                 <a href="#">删除</a> |
                 <a href="#">编辑</a> |
+                {% endif %}
             {% endif %}
-
         </p>
     {% endfor %}
 {% endblock %}
