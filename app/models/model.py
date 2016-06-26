@@ -15,7 +15,7 @@ from ..utilities import log
 
 app = Flask(__name__)
 app.secret_key = 'ert4-bgs6-3rew-hj9x'
-db_path = 'models.db'
+db_path = '../../models.db'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///{}'.format(db_path)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
@@ -53,6 +53,3 @@ def rebuild_db():
     db.create_all()
     log('rebuilt database successfully')
 
-
-if __name__ == '__main__':
-    manager.run()

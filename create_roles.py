@@ -1,6 +1,5 @@
 # encoding: utf-8
 
-from app.models.model import rebuild_db
 from app.models.role import Role
 from app.utilities import log
 
@@ -11,5 +10,4 @@ def create_roles():
 
 
 if __name__ == '__main__':
-    rebuild_db()
     create_roles()

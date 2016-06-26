@@ -40,3 +40,5 @@ class Role(db.Model, Model):
             role.permissions = roles[r][0]
             role.default = roles[r][1]
             role.save()
+
+
