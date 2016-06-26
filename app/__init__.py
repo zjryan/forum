@@ -5,12 +5,13 @@ from flask import Flask
 
 app = Flask(__name__)
 app.secret_key = 'jgn3-kigf-4bgk-0ndv'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
 
 from app import views
-from .models.user import current_user
-from .models.channel import Channel
-from .models.user import User
+from app.models.user import current_user
+from app.models.channel import Channel
+from app.models.user import User
 
 
 @app.context_processor

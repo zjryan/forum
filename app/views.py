@@ -1,20 +1,20 @@
 # encoding: utf-8
 
-from flask import redirect
-from flask import render_template
-from flask import url_for
-from flask import request
-from flask import session
 from flask import abort
 from flask import flash
-
+from flask import redirect
+from flask import render_template
+from flask import request
+from flask import session
+from flask import url_for
 from .models.channel import Channel
-from .models.post import Post
-from .models.user import User
 from .models.comment import Comment
+from .models.user import User
 from .models.user import current_user
-from .utilities import log
+
 from app import app
+from app.models.post import Post
+from .utilities import log
 
 
 def url_back(route='index'):

@@ -1,8 +1,10 @@
 # encoding: utf-8
 
 from flask import Flask
-from flask.ext.sqlalchemy import SQLAlchemy
-from flask.ext.script import Manager
+from flask_sqlalchemy import SQLAlchemy
+from flask_script import Manager
+from flask_migrate import Migrate
+from flask_migrate import MigrateCommand
 
 import time
 import shutil
@@ -15,9 +17,13 @@ app = Flask(__name__)
 app.secret_key = 'ert4-bgs6-3rew-hj9x'
 db_path = 'models.db'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///{}'.format(db_path)
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
 db = SQLAlchemy(app)
 manager = Manager(app)
+migrate = Migrate(app, db)
+
+manager.add_command('db', MigrateCommand)
 
 
 class Model(object):
@@ -48,3 +54,5 @@ def rebuild_db():
     log('rebuilt database successfully')
 
 
+if __name__ == '__main__':
+    manager.run()

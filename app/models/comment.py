@@ -1,7 +1,7 @@
 # encoding: utf-8
 
-from . import Model
-from . import db
+from .model import Model
+from .model import db
 
 from sqlalchemy import sql
 

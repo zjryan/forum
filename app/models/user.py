@@ -1,12 +1,12 @@
 # encoding: utf-8
 
-from . import Model
-from . import db
+from .model import Model
+from .model import db
 from .role import Role
 from .role import Permission
-from ..utilities import email_validate
-from ..utilities import generate_password_hash
-from ..utilities import check_password_hash
+from app.utilities import email_validate
+from app.utilities import generate_password_hash
+from app.utilities import check_password_hash
 
 from sqlalchemy import sql
 from flask import session

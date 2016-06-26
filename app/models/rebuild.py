@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-from app.models import rebuild_db
+from app.models.model import rebuild_db
 from app.models.role import Role
 from app.utilities import log
 
