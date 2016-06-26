@@ -201,6 +201,7 @@ div.channel-list {
 
 div.follow-count {
     margin-top: 25px;
+    font-size: 120%
 }
 
 ul.activities {
@@ -232,4 +233,17 @@ div.activity-date {
 
 div.activity-footer {
     float: right
+}
+
+div.forum-info {
+    margin-top: 30px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;
+    border-top: 1px solid #e0e0e0;
+}
+
+div.forum-info-item {
+    font-size: 110%;
+    padding: 3px 0px 3px 0px;
 }

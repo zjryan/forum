@@ -17,6 +17,12 @@ from .utilities import log
 from app import app
 
 
+def url_back(route='index'):
+    return request.args.get('next') \
+                        or request.referrer \
+                        or url_for(route)
+
+
 @app.route('/')
 def index():
     posts = Post.query.all()
@@ -73,10 +79,7 @@ def delete_post(id):
         p.delete()
         log('删除帖子成功')
         flash('删除帖子成功')
-        return redirect(request.args.get('next') \
-                        or request.referrer \
-                        or url_for('index'))
-
+        return redirect(url_back())
 
 
 @app.route('/post/list')
@@ -115,6 +118,22 @@ def add_comment(post_id):
         log('回复失败')
         flash('回复失败')
     return redirect(url_for('post_view', id=post_id))
+
+
+@app.route('/comment/delete/<int:id>')
+def delete_comment(id):
+    c = Comment.query.get(id)
+    if c is None:
+        abort(404)
+    user = current_user()
+    author = c.author
+    if user is None and user is not author and not user.is_admin():
+        abort(401)
+    else:
+        c.delete()
+        log('删除评论成功')
+        flash('删除评论成功')
+        return redirect(url_back())
 
 
 @app.route('/login', methods=['GET'])
