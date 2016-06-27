@@ -277,3 +277,21 @@ div.user-name-note {
 .profile-info-item {
 
 }
+
+div.activities-list {
+    border-radius: 5px;
+    border: 1px solid #e0e0e0;
+}
+
+div.activities-list-header {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    font-size: 180%;
+    font-weight: bold;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+div.activities-list-body {
+    padding-top: 10px;
+    padding-bottom: 20px;
+}

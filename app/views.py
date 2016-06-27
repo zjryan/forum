@@ -174,7 +174,8 @@ def register():
         user.save()
         log(user.username, '用户注册成功')
         flash('用户注册成功')
-        return redirect(url_for('login_view'))
+        session['user_key'] = user.id
+        return redirect(url_for('index'))
     else:
         log('用户注册失败')
         flash('用户注册失败')

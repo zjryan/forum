@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-12 profile">
             <div class="col-md-12 user-name-note">
-                {{ user.username }}
+                {{ user.username }} ，
             </div>
             <div class="col-md-4 profile-portrait">
                 <img class="img-rounded center-block" src="{{ user.gravatar(size=180) }}" />
@@ -19,13 +19,17 @@
                 <p>个性签名: </p>
             </div>
         </div>
-        <div class="col-md-12">
-            <h2>他的动态</h2>
-            {% include "_activities.html" %}
+        <div class="col-md-12 activities-list">
+            <div class="activities-list-header">最新动态</div>
+            <div class="activities-list-body">
+                {% if activities.__len__() == 0 %}
+                    <h4>暂无动态</h4>
+                {% else %}
+                    {% include "_activities.html" %}
+                {% endif %}
+            </div>
         </div>
     </div>
-
-
 {% endblock %}
 
 {% block page_side %}
