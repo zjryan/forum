@@ -212,11 +212,9 @@ ul.activities {
 
 ul.activities li.activity {
     padding: 8px;
-    border-bottom: 1px solid #e0e0e0;
 }
 
 ul.activities li.activity:nth-child(1) {
-    border-top: 1px solid #e0e0e0;
 }
 
 ul.activities li.activity:hover {
@@ -248,6 +246,34 @@ div.forum-info-item {
     padding: 3px 0px 3px 0px;
 }
 
+div.side-bar {
+    padding-left: 45px;
+}
+
 .side-portrait {
     padding: 10px 0px 10px 0px;
+}
+
+.profile {
+    border-radius: 5px;
+    border: 1px solid #e0e0e0;
+    margin: 20px 0px 20px 0px;
+    padding: 10px 20px 30px 10px;
+}
+
+div.user-name-note {
+    font-size: 240%;
+    margin-bottom: 10px;
+}
+
+.profile-portrait {
+    padding: 10px;
+}
+
+.profile-info {
+    font-size: 130%;
+}
+
+.profile-info-item {
+
 }

@@ -3,12 +3,29 @@
 {% block title %}{{ user.username }} - 用户资料{% endblock %}
 
 {% block page_content %}
-    <h1>{{ user.username }} - 用户资料</h1>
-    <p>性    别: </p>
-    <p>个性签名: </p>
-    <hr>
-    <h2>他的动态</h2>
-    {% include "_activities.html" %}
+    <div class="row">
+        <div class="col-md-12 profile">
+            <div class="col-md-12 user-name-note">
+                {{ user.username }}
+            </div>
+            <div class="col-md-4 profile-portrait">
+                <img class="img-rounded center-block" src="{{ user.gravatar(size=180) }}" />
+            </div>
+            <div class="col-md-8 profile-info">
+                <div class="profile-info-item">
+                    <i class="icon-arrow-right"></i>
+                </div>
+                <p>性    别: </p>
+                <p>个性签名: </p>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <h2>他的动态</h2>
+            {% include "_activities.html" %}
+        </div>
+    </div>
+
+
 {% endblock %}
 
 {% block page_side %}

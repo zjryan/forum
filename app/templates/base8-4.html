@@ -7,7 +7,7 @@
             {% include "_flashed_msg.html" %}
             {% block page_content %}{% endblock %}
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 side-bar">
         {% block page_side %}
             {% if current_user is not none %}
             <img class="img-rounded center-block side-portrait" src="{{ current_user.gravatar(size=200) }}" />
