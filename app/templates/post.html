@@ -3,27 +3,42 @@
 {% block title %} 帖子 - {{ post.title }}{% endblock %}
 
 {% block page_content %}
+    {% set title = post.title %}
+    {% set content = post.content %}
     {% set author = post.author.username %}
-    <body>
-        <h1>{{ post.title }}</h1>
-        <br>
-        <p><a href="{{ url_for('profile', username=author) }}">{{ author }}</a> 发表于 {{ post.created_time }}</p>
-        <br>
-        <p>{{ post.content }}</p>
-    </body>
-    <hr>
-    <h2>回复</h2>
-    {% if comments.__len__() != 0 %}
-        {% include "_comments.html" %}
-    {% else %}
-        <h3>暂无回复</h3>
-    {% endif %}
+    <div class="row">
+        <div class="col-md-12 post-detail-content">
+            <div class="post-detail-title">
+                {{ title }}
+            </div>
+            <div class="post-detail-body">
+                {{ content }}
+            </div>
+            <div class="post-detail-info">
+                作者： {{ author }} &nbsp; | &nbsp; 发表于： {{ post.created_time }} &nbsp; | &nbsp; 最后更新于：
+            </div>
+        </div>
+
+        <div class="col-md-12 comment-list">
+            {% set comment_count = comments.__len__() %}
+            <div class="comment-list-header">
+                {{ comment_count }}条回复
+            </div>
+            {% if comment_count > 0 %}
+            <div class="comment-list-body">
+                {% include "_comments.html" %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
     {% if current_user is not none %}
-    <h2>回复该帖</h2>
-    <form class="pure-form" action="{{ post.id }}/add_comment" method="POST">
-        <input name="content" class="form-control" />
-        <br>
-        <button class="pure-button pure-button-primary">回复</button>
-    </form>
+    <div class="comment-form">
+        <form class="form-horizontal" action="{{ post.id }}/add_comment" method="POST">
+        <div class="col-lg-10">
+            <input class="form-control input-lg" name="content" placeholder="说点什么...">
+        </div>&nbsp;
+        <button type="submit" class="btn btn-primary btn-lg">发表</button>
+        </form>
+    </div>
     {% endif %}
 {% endblock %}

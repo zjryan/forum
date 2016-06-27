@@ -1,19 +1,31 @@
-<ul class="comments">
-    {% for c in comments %}
-        <li class="comment">
-            {% set author = c.author.username %}
-            {% set item = c.display_item() %}
-            {% set content = item[1] %}
-            {% set created_time = c.created_time %}
-            <div class="comment-info">
+{% for c in comments %}
+    {% set author = c.author.username %}
+    {% set content = c.content %}
+    {% set created_time = c.created_time %}
+    <div class="col-md-12 comment-content">
+        <div class="col-md-2 comment-author-info">
+            <div class="comment-portriat">
+                <a href="/profile/author">
+                    <img class="img-rounded center-block" src="{{c.author.gravatar(size=50)}}">
+                </a>
+            </div>
+            <div class="comment-author">
                 {{ author }}
             </div>
-            <div class="comment-content">
-                <p>{{ content }}</p>
-                <div class="comment-footer">
-                    {{ created_time }}
-                </div>
+        </div>
+        <div class="col-md-10 comment-details">
+            <div class="col-md-12 comment-body">
+                {{ content }}
             </div>
-        </li>
-    {% endfor %}
-</ul>
+        </div>
+        <div class="col-md-12 comment-footer">
+            {% if current_user is not none or current_user == c.author or current_user.is_admin() %}
+            编辑
+            &nbsp; | &nbsp;
+            <a href="{{ url_for('delete_comment', id=c.id) }}">删除</a>
+            &nbsp; | &nbsp;
+            发表于： {{ created_time }}
+            {% endif %}
+        </div>
+    </div>
+{% endfor %}
