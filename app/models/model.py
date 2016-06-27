@@ -15,8 +15,8 @@ from ..utilities import log
 
 app = Flask(__name__)
 app.secret_key = 'ert4-bgs6-3rew-hj9x'
-db_path = '../../models.db'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///{}'.format(db_path)
+db_path = 'app.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///../../app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
 db = SQLAlchemy(app)

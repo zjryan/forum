@@ -10,6 +10,7 @@ from app.utilities import check_password_hash
 
 from sqlalchemy import sql
 from flask import session
+from hashlib import md5
 
 
 class User(db.Model, Model):
@@ -18,6 +19,7 @@ class User(db.Model, Model):
     username = db.Column(db.String(), unique=True)
     password_hash = db.Column(db.String())
     email = db.Column(db.String(), unique=True)
+    avatar_hash = db.Column(db.String())
     created_time = db.Column(db.DateTime(timezone=True),
                              default=sql.func.now())
 
@@ -43,6 +45,7 @@ class User(db.Model, Model):
         self.password = form.get('password', '')
         self.email = form.get('email', '')
         self.set_user_role()
+        self.cache_avatar()
 
     def login_valid(self, form):
         username = form.get('username', '')
@@ -86,6 +89,24 @@ class User(db.Model, Model):
 
     def can_write_post(self):
         return self.role.permissions & Permission.WRITE_POSTS
+
+    def gravatar(self, size=100, default='identicon', rating='g'):
+        from flask import request
+        gravatar_url = 'secure.gravatar.com/avatar'
+        if request.is_secure:
+            url = 'https://' + gravatar_url
+        else:
+            url = 'http://' + gravatar_url
+        hash = self.avatar_hash or md5(self.email.encode('utf-8')).hexdigest()
+        return '{url}/{hash}?s={size}&d={default}&r={rating}'.format(url=url,
+                                                                     hash=hash,
+                                                                     size=size,
+                                                                     default=default,
+                                                                     rating=rating)
+
+    def cache_avatar(self):
+        if self.email is not None and self.avatar_hash is None:
+            self.avatar_hash = md5(self.email.encode('utf-8')).hexdigest()
 
 
 def current_user():

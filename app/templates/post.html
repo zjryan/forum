@@ -3,18 +3,27 @@
 {% block title %} 帖子 - {{ post.title }}{% endblock %}
 
 {% block page_content %}
+    {% set author = post.author.username %}
     <body>
         <h1>{{ post.title }}</h1>
+        <br>
+        <p><a href="{{ url_for('profile', username=author) }}">{{ author }}</a> 发表于 {{ post.created_time }}</p>
         <br>
         <p>{{ post.content }}</p>
     </body>
     <hr>
     <h2>回复</h2>
-    {% include "_comments.html" %}
+    {% if comments.__len__() != 0 %}
+        {% include "_comments.html" %}
+    {% else %}
+        <h3>暂无回复</h3>
+    {% endif %}
+    {% if current_user is not none %}
     <h2>回复该帖</h2>
     <form class="pure-form" action="{{ post.id }}/add_comment" method="POST">
         <input name="content" class="form-control" />
         <br>
         <button class="pure-button pure-button-primary">回复</button>
     </form>
+    {% endif %}
 {% endblock %}

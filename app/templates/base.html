@@ -21,6 +21,9 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="/">主页</a></li>
+                    {% if current_user is not none and current_user.is_admin() %}
+                    <li><a href="#">管理</a></li>
+                    {% endif %}
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if current_user is not none %}

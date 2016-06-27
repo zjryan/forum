@@ -10,7 +10,7 @@
         <div class="col-md-4">
         {% block page_side %}
             {% if current_user is not none %}
-            <img class="img-rounded center-block" alt="140x140" src="../static/img/default_img.png" />
+            <img class="img-rounded center-block side-portrait" src="{{ current_user.gravatar(size=200) }}" />
             <div class="row follow-count">
                 <div class="col-md-4">
                 </div>
