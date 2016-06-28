@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-from app.models.model import manager
+from app import manager
 
 
 if __name__ == '__main__':

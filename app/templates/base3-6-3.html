@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Base3-9-3{% endblock %}
+
+{% block content %}
+    <section class="bars">
+        <div class="container">
+            <div class="row">
+            <div class="col-md-3">
+                <div class="row bar-left">
+                    {% block left_bar %}
+                    {% include "_channels.html" %}
+                    {% endblock %}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row bar-mid">
+                    {% include "_flashed_msg.html" %}
+                    {% block page_content %}{% endblock %}
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="row bar-right">
+                    {% block right_bar %}
+                    {% if current_user is not none %}
+                        <img class="img-rounded center-block side-portrait" src="{{ current_user.gravatar(size=200) }}" />
+                        <div class="row follow-count">
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                            关注了<br>0 人</div>
+                            <div class="col-md-4">
+                            关注者<br>0 人</div>
+                        </div>
+                    {% endif %}
+                    <div class="forum-info">
+                        <div class="forum-info-item">最近加入: {{ new_user.username }}</div>
+                        <div class="forum-info-item">用户人数: {{ user_count }}</div>
+                    </div>
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+        </div>
+
+    </section>
+{% endblock %}

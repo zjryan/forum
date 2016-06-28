@@ -2,17 +2,33 @@
 
 {% block title %}用户登录{% endblock %}
 
-{% block page_content %}
-    <h1>用户登录</h1>
-    <form class="pure-form" action="/login" method="POST">
-        <input name="username" class="form-control" placeholder="输入用户名" />
-        <br>
-        <input name="password" class="form-control" type="password" placeholder="输入密码" />
-        <br>
-        <button class="pure-button pure-button-primary" type="submit">登录</button>
-    </form>
-    <p>没有账号？<a href="/register">点击注册</a></p>
+{% block header %}
+    <div class="hero-content text-center">
+        <section class="sign-up section-padding text-center from-bg" id="download">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <h2>用户登录</h2>
+                        <h3>与世界分享你的装逼经验</h3>
+                        <form class="signup-form" action="/login" method="POST" role="form">
+                            <div class="form-input-group">
+                                <i class="fa fa-user"></i>
+                                <input type="text" name="username" placeholder="输入用户名" required>
+                            </div>
+                            <div class="form-input-group">
+                                <i class="fa fa-lock"></i>
+                                <input type="password" name="password" placeholder="输入密码" required>
+                            </div>
+                            <button type="submit" class="btn-fill sign-up-btn">点击登录</button>
+                        </form>
+                        <div class="sign-up-note">没有账号？<a href="/register">点击注册</a></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 {% endblock %}
 
-{% block page_side %}
+{% block to_top %}
 {% endblock %}
+

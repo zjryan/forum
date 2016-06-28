@@ -1,16 +1,26 @@
 # encoding: utf-8
 
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+from flask_script import Manager
+from flask_migrate import Migrate
+from flask_migrate import MigrateCommand
 
 
 app = Flask(__name__)
 app.secret_key = 'jgn3-kigf-4bgk-0ndv'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+app.config.from_object('config')
+db = SQLAlchemy(app)
+manager = Manager(app)
+migrate = Migrate(app, db)
+
+manager.add_command('db', MigrateCommand)
 
 
 from app import views
 from app.models.user import current_user
 from app.models.channel import Channel
+from app.models.channel import ChannelPermission
 from app.models.user import User
 
 
@@ -22,7 +32,15 @@ def current_user_processor():
 @app.context_processor
 def channel_processor():
     channels = Channel.query.all()
-    return dict(channels=channels)
+    permissions = [
+        ChannelPermission.NORMAL,
+        ChannelPermission.ADMIN,
+    ]
+    dic = {
+        'channels': channels,
+        'permissions': permissions,
+    }
+    return dict(**dic)
 
 
 @app.context_processor

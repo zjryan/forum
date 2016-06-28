@@ -1,6 +1,8 @@
-{% for msg in get_flashed_messages() %}
-<div class="alert {% if '成功' in msg %}alert-success{% elif '失败' in msg %}alert-danger{% else %}alert-warning{% endif %}">
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-    {{ msg }}
+<div class="flash-msg">
+    {% for msg in get_flashed_messages() %}
+    <div class="alert {% if '成功' in msg %}alert-success{% elif '失败' in msg %}alert-danger{% else %}alert-warning{% endif %}">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ msg }}
+    </div>
+    {% endfor %}
 </div>
-{% endfor %}

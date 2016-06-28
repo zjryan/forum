@@ -195,3 +195,21 @@ def profile(username):
                            user=u,
                            activities=activities)
 
+
+@app.route('/admin')
+def admin_view():
+    return render_template('admin.html')
+
+
+@app.route('/admin/add_channel', methods=['POST'])
+def add_channel():
+    form = request.form
+    if Channel.add_valid(form):
+        channel = Channel(form)
+        channel.save()
+        log('添加频道成功')
+        flash('添加频道成功')
+    else:
+        log('添加频道失败')
+        flash('添加频道失败')
+    return redirect(url_back('admin'))
