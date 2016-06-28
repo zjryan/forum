@@ -771,20 +771,29 @@ section.content {
  background: #F3F4F8; }
 section.bars .bar-left {
   padding-top: 20px;
-  background: #F3F4F8; }
+  background: #F3F4F8;
+  margin-bottom: 40px; }
 section.bars .bar-mid {
   padding-top: 20px;
-  background: #ffffff; }
+  background: #ffffff;
+  margin-bottom: 40px; }
 section.bars .bar-right {
   padding-top: 20px;
-  background: #F3F4F8; }
-div.channel-list {
-}
+  background: #F3F4F8;
+  margin-bottom: 40px;
+  }
 div.channel-list-caption {
   font-size: 130%;
   color: #FF5274;
+  padding-top: 2%;
   padding-bottom: 1%;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid #d0d0d0;
+}
+div.channel-list {
+  border: 1px solid #d0d0d0;
+  border-radius: 3px;
+  padding-top: 4%;
+  padding-bottom: 3%;
 }
 div.channel-list-items {
     margin-top: 2%
@@ -794,8 +803,17 @@ div.channel-list-item {
   color: #FF5274;
   padding: 3px 0px 3px 9%;
 }
+div.channel-add {
+  padding-top: 20px;
+  padding-bottom: 15px;
+}
 div.flash-msg {
   margin: 4% 0 4% 0; }
+.add-channel-btn {
+  color: #F3F4F8;
+  background-color: #FF5274;
+  margin-top: 5px;
+}
 
 /* ==========================================================================
 Footer

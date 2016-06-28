@@ -9,18 +9,7 @@
             <div class="col-md-3">
                 <div class="row bar-left">
                     {% block left_bar %}
-                        <div class="col-md-12 channel-list">
-                            <div class="channel-list-caption">
-                                <i class="fa fa-list-alt"></i>&nbsp; 所有频道
-                            </div>
-                            <div class="channel-list-items">
-                                {% for c in channels %}
-                                <div class="channel-list-item">
-                                    <a href="/channel/{{ c.id }}">{{ c.name }}</a>
-                                </div>
-                                {% endfor %}
-                            </div>
-                        </div>
+                    {% include "_channels.html" %}
                     {% endblock %}
                 </div>
             </div>

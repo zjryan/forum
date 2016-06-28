@@ -26,21 +26,7 @@
                     <div class="forum-info-item">最近加入: {{ new_user.username }}</div>
                     <div class="forum-info-item">用户人数: {{ user_count }}</div>
                 </div>
-                <div class="col-md-12 row channel-list">
-                    <h3>所有频道</h3>
-                    <ul class="list-group">
-                        {% for c in channels %}
-                        <li class="list-group-item"><a href="/channel/{{ c.id }}">{{ c.name }}</a></li>
-                        {% endfor %}
-                    </ul>
-                    {% if current_user is not none and current_user.is_admin() %}
-                    <h3>管理员频道</h3>
-                    <ul class="list-group channel-list">
-                        <li class="list-group-item">地下储瓜间</li>
-                        <li class="list-group-item">神秘图书馆</li>
-                    </ul>
-                    {% endif %}
-                </div>
+                {% include "_channels.html" %}
             </div>
         </div>
         </div>
