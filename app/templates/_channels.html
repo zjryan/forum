@@ -1,6 +1,6 @@
 <div class="col-md-10 channel-list">
     <div class="channel-list-caption">
-        <i class="fa fa-list-alt"></i>&nbsp; 所有频道
+        <i class="fa fa-list-alt"></i> 所有频道
     </div>
     <div class="channel-list-items">
         {% for c in channels %}
@@ -12,9 +12,9 @@
         {% endfor %}
     </div>
 
-    {% if current_user is not none and current_user.is_admin()%}
+    {% if current_user is not none and current_user.is_admin() %}
         <div class="channel-list-caption">
-            <i class="fa fa-list-alt"></i>&nbsp; 管理员频道
+            <i class="fa fa-list-alt"></i> 管理员频道
         </div>
         {% for c in channels %}
         {% if c.is_admin() %}
@@ -23,21 +23,29 @@
             </div>
         {% endif %}
         {% endfor %}
-        <div class="channel-add">
-            <form class="form-inline" action="/admin/add_channel" method="POST">
-                <div class="form-group">
-                    <div class="input-group">
-                        <div class="input-group-addon"><i class="fa fa-plus"></i></div>
-                        <input type="text" class="form-control" name="name" placeholder="输入频道名">
-                        <select class="form-control" name="permission">
-                            {% for p in permissions %}
-                            <option value="{{ p[0] }}">{{ p[1] }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                </div>
-              <button type="submit" class="btn btn-fill btn-middle add-channel-btn">增加频道</button>
-            </form>
-        </div>
+
     {% endif %}
 </div>
+
+{% if current_user is not none and current_user.is_admin() %}
+<div class="col-md-10 channel-list add-channel">
+    <div class="channel-list-caption">
+        <i class="fa fa-plus-square-o"></i> 添加频道
+    </div>
+    <div class="channel-add">
+        <form class="form-inline" action="/admin/add_channel" method="POST">
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="name" placeholder="输入频道名">
+                    <select class="form-control" name="permission">
+                        {% for p in permissions %}
+                        <option value="{{ p[0] }}">{{ p[1] }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+          <button type="submit" class="btn btn-fill btn-middle add-channel-btn">增加频道</button>
+        </form>
+    </div>
+</div>
+{% endif %}
