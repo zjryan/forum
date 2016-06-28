@@ -709,6 +709,14 @@ Sign up form
         -ms-transform: translateY(-50%);
             transform: translateY(-50%);
     margin-left: 20px; }
+    .sign-up .signup-form .form-input-group i.fa-user {
+    font-size: 14px;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+    margin-left: 20px; }
   .sign-up .signup-form .form-input-group input {
     padding-left: 68px;
     width: 100%;
@@ -723,6 +731,12 @@ Sign up form
     color: #BCC1C3; }
   .sign-up .signup-form .form-input-group input:-ms-input-placeholder {
     color: #BCC1C3; }
+  .sign-up-note {
+    text-align: right;
+    font-size: 120%;
+    padding-right: 10%;
+    padding-top: 2%;  }
+
 
 /* ==========================================================================
 To top
