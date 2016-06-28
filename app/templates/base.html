@@ -67,15 +67,19 @@
     {% block content%}
     {% endblock %}
 
+
     <section class="to-top">
         <div class="container">
             <div class="row">
                 <div class="to-top-wrap">
+                    {% block to_top %}
                     <a href="#top" class="top"><i class="fa fa-angle-up"></i></a>
+                    {% endblock %}
                 </div>
             </div>
         </div>
     </section>
+
     <footer>
         <div class="container">
             <div class="row">
