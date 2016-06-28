@@ -792,8 +792,8 @@ div.channel-list-caption {
 div.channel-list {
   border: 1px solid #d0d0d0;
   border-radius: 3px;
-  padding-top: 4%;
-  padding-bottom: 3%;
+  padding-top: 5%;
+  padding-bottom: 8%;
 }
 div.channel-list-items {
     margin-top: 2%
@@ -810,9 +810,12 @@ div.channel-add {
 div.flash-msg {
   margin: 4% 0 4% 0; }
 .add-channel-btn {
-  color: #F3F4F8;
-  background-color: #FF5274;
-  margin-top: 5px;
+  float: right;
+  margin-top: 7px;
+  border-radius: 7px;
+}
+div.channel-list i.fa-plus {
+  color: #909090;
 }
 
 /* ==========================================================================

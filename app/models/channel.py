@@ -30,7 +30,7 @@ class Channel(db.Model, Model):
     def add_valid(form):
         channel_name = form.get('name', '')
         length = len(channel_name)
-        return length > 2 and length < 10
+        return length > 2 and length <= 15
 
     def is_admin(self):
         return self.permission == ChannelPermission.ADMIN[0]
