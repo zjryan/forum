@@ -345,8 +345,8 @@ Navigation
 Hero
 ========================================================================== */
 .hero {
-  min-height: 250px;
-  background: url("../img/pic02.jpg") center center;
+  min-height: 320px;
+  background: url("../img/polygonal-bg.jpg") center center;
   background-size: cover;
   position: relative; }
   .hero .down-arrow a {
@@ -360,7 +360,10 @@ Hero
     font-weight: 300;
     margin-bottom: 80px; }
   .hero .hero-content {
-    padding-top: 12%; }
+    padding-top: 15%; }
+   .hero-nav {
+    font-size: 120%;
+   }
 
 .navigation {
   -webkit-transition: all 300ms ease-in-out;
@@ -666,7 +669,8 @@ Sign up form
   padding: 15px 0;
   border-radius: 3px;
   width: 80%;
-  font-size: 13px; }
+  font-size: 15px;
+  }
 .sign-up .signup-form .form-input-group {
   width: 80%;
   height: 55px;
@@ -817,7 +821,7 @@ footer {
     footer .social-share a i {
       margin-top: 20px; }
   footer .footer-links {
-    margin: 120px 0 120px 0; }
+    margin: 0px 0 0px 0; }
 
 /* ==========================================================================
 Icon font (http://www.elegantthemes.com/blog/freebie-of-the-week/free-line-style-icons)

@@ -43,7 +43,7 @@
                                     <li><a href="/login" class="login">登录</a></li>
                                     <li><a href="/register" class="btn-white btn-small">注册</a></li>
                                     {% else %}
-                                    <li><a href="/profile/{{ current_user.username }}">{{ current_user.username }}</a></li>
+                                    <li><a href="/profile/{{ current_user.username }}" class="hero-nav">{{ current_user.username }} &nbsp;</a></li>
                                     <li><a href="/logout" class="btn-white btn-small">注销用户</a></li>
                                     {% endif %}
                                 </ul>
@@ -57,10 +57,8 @@
             </section>
             <div class="container">
                 <div class="row">
-                    <div class="col-md-10 col-md-offset-1">
-                        {% block header %}
-                        {% endblock %}
-                    </div>
+                    {% block header %}
+                    {% endblock %}
                 </div>
             </div>
         </section>
@@ -69,7 +67,31 @@
     {% block content%}
     {% endblock %}
 
-
+    <section class="to-top">
+        <div class="container">
+            <div class="row">
+                <div class="to-top-wrap">
+                    <a href="#top" class="top"><i class="fa fa-angle-up"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="footer-links">
+                        <ul class="footer-group">
+                            <li><a href="/">主页</a></li>
+                            <li><a href="/login">登录</a></li>
+                            <li><a href="/register">注册</a></li>
+                        </ul>
+                        <p>Copyright © 2016 <a href="/">Ryan</a><br></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     {% block script %}
     <script src="../static/js/vendor/jquery-1.11.2.min.js"></script>
