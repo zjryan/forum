@@ -331,14 +331,13 @@ div.comment-author-info {
 
 div.comment-details {
     font-size: 120%;
-    border-left: 1px solid #e0e0e0;
 }
 
 div.comment-author {
     font-weight: bold;
     font-size: 110%;
     text-align: center;
-    padding: 5px;
+    padding: 8px;
 }
 
 div.comment-content {
