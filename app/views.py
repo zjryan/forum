@@ -195,3 +195,7 @@ def profile(username):
                            user=u,
                            activities=activities)
 
+
+@app.route('/admin')
+def admin_view():
+    return render_template('admin.html')

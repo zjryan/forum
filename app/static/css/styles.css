@@ -765,6 +765,39 @@ To top
     position: relative; }
 
 /* ==========================================================================
+Content
+========================================================================== */
+section.content {
+ background: #F3F4F8; }
+section.bars .bar-left {
+  padding-top: 20px;
+  background: #F3F4F8; }
+section.bars .bar-mid {
+  padding-top: 20px;
+  background: #ffffff; }
+section.bars .bar-right {
+  padding-top: 20px;
+  background: #F3F4F8; }
+div.channel-list {
+}
+div.channel-list-caption {
+  font-size: 130%;
+  color: #FF5274;
+  padding-bottom: 1%;
+  border-bottom: 1px solid #e0e0e0;
+}
+div.channel-list-items {
+    margin-top: 2%
+}
+div.channel-list-item {
+  font-size: 120%;
+  color: #FF5274;
+  padding: 3px 0px 3px 9%;
+}
+div.flash-msg {
+  margin: 4% 0 4% 0; }
+
+/* ==========================================================================
 Footer
 ========================================================================== */
 footer {
