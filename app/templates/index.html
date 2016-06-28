@@ -2,9 +2,14 @@
 
 {% block title %} 首页 {% endblock %}
 
+{% block header %}
+    <div class="hero-content text-center">
+        <h1>欢迎，{{ current_user.username }}</h1>
+    </div>
+{% endblock %}
+
 {% block page_content %}
     {% if current_user is not none %}
-        <h1>欢迎，{{ current_user.username }}</h1>
     {% endif %}
     <h3>最新帖子</h3>
     {% include "_posts.html" %}
