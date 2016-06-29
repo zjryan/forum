@@ -26,7 +26,7 @@
                         {{ post_content }}
                     </div>
                 <div class="item-footer">
-                    作者: {{ post_author.username }} | 发表时间: {{ post.created_time }}
+                    作者: {{ post_author.username }} | {{ post.comments | length }} 条评论 | 发表时间: {{ post.created_time }}
                 </div>
             </div>
         </div>
