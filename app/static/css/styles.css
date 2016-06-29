@@ -781,7 +781,8 @@ section.bars .bar-left {
   background: #F3F4F8;
   margin-bottom: 40px; }
 .page-content {
-  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 30px;
   margin-bottom: 40px; }
 section.bars .bar-right {
   padding-top: 20px;
@@ -833,7 +834,7 @@ div.channel-list i.fa-plus {
   color: #909090;
 }
 .side-bar {
-  margin-top: 30px;
+  margin-top: 40px;
   margin-bottom: 40px;
 }
 .portrait {
@@ -867,6 +868,65 @@ div.channel-list i.fa-plus {
   padding: 2px 0 2px 0;
 }
 
+/* ==========================================================================
+Item Container
+========================================================================== */
+div.items-container {
+}
+div.item-container {
+  border-right: 1px solid #c0c0c0;
+  border-bottom: 1px solid #c0c0c0;
+  border-radius: 20px;
+  background-color: #ffffff;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  padding: 7px;
+  font-size: 120%;
+}
+div.item-container:hover {
+  background-color: #f0f0f0;
+}
+div.item-container .item-left{
+  padding-top: 3%;
+  padding-bottom: 3%;
+  border-right: 1px solid #d0d0d0;
+  min-height: 180px;
+}
+div.item-container .item-portrait .round {
+  border-radius: 30px;
+}
+div.item-container .item-author {
+  text-align: center;
+  font-weight: bold;
+  padding-top: 10px;
+}
+div.item-container .item-right{
+  padding-left: 3%;
+}
+div.item-container .item-header {
+  padding: 2px 0 2px 0;
+  color: #a0a0a0;
+}
+div.item-container .item-body {
+  font-size: 115%;
+}
+div.item-container .item-title {
+  font-size: 125%;
+  font-weight: bold;
+  padding-top: 4px;
+  padding-bottom: 2px;
+}
+div.item-container .item-content {
+  font-size: 110%;
+  padding-top: 5px;
+  padding-bottom: 3px;
+  min-height: 95px;
+}
+div.item-container .item-footer {
+  min-height: 20px;
+  color: #a0a0a0;
+  float: right;
+}
 /* ==========================================================================
 Footer
 ========================================================================== */

@@ -1,22 +1,34 @@
-<ul class="posts">
+<div class="items-container">
     {% for post in posts %}
-        <li class="post">
-            {% set post_author = post.author.username %}
+        <div class="item-container col-md-12">
+            {% set post_author = post.author %}
             {% set post_channel = post.channel.name %}
             {% set item = post.display_item() %}
             {% set post_title = item[1] %}
             {% set post_content = item[2] %}
-            <div class="post-content">
-                <div>{{ post_author }} 在 {{ post_channel }} 内发表了</div><br>
-                <p class="post-title"><a href="{{ url_for('post_view', id=post.id) }}">{{ post_title }}</a></p>
-                <p>{{ post_content }}</p>
-                <br>
-                <p class="post-attr">
-                    <a href="{{ url_for('profile', username=post_author) }}">
-                        {{ post_author }}
-                    </a> | {{ post.created_time }}
-                </p><br>
+            <div class="col-md-2 item-left">
+                <div class="item-portrait">
+                    <img class="img-rounded center-block round" src="{{ post_author.gravatar(size=60) }}" />
+                </div>
+                <div class="item-author">
+                    <a href="/profile/{{ post_author.username }}">{{ post_author.username }}</a>
+                </div>
             </div>
-        </li>
+            <div class="col-md-10 item-right">
+                <div class="item-header">
+                    {{ post_author.username }} 在 {{ post_channel }} 内发表了
+                </div>
+                <div class="item-body"></div>
+                    <div class="item-title">
+                        <a href="/post/{{ post.id }}">{{ post_title }}</a>
+                    </div>
+                    <div class="item-content">
+                        {{ post_content }}
+                    </div>
+                <div class="item-footer">
+                    作者: {{ post_author.username }} | 发表时间: {{ post.created_time }}
+                </div>
+            </div>
+        </div>
     {% endfor %}
-</ul>
+</div>

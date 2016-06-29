@@ -36,8 +36,9 @@ class Post(db.Model, Model):
     def display_item(self):
         name = 'post'
         title = self.title
-        if self.content.__len__() > 50:
-            content = self.content[:50] + '...'
+        content_len = 80
+        if self.content.__len__() > content_len:
+            content = self.content[:content_len] + '...'
         else:
             content = self.content
         return (name, title, content)
