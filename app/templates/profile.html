@@ -4,23 +4,30 @@
 
 {% block page_content %}
     <div class="row">
-        <div class="col-md-12 profile">
-            <div class="col-md-12 user-name-note">
-                {{ user.username }} ，
-            </div>
-            <div class="col-md-4 profile-portrait">
-                <img class="img-rounded center-block" src="{{ user.gravatar(size=180) }}" />
-            </div>
-            <div class="col-md-8 profile-info">
-                <p>性    别: </p>
-                <p>个性签名: </p>
+        <div class="col-md-12 item-container profile-card">
+            <div class="row">
+                <div class="col-md-12 profile-header">
+                    {{ user.username }} ，
+                </div>
+                <div class="col-md-4 profile-left">
+                    <img class="img-rounded center-block" src="{{ user.gravatar(size=180) }}" />
+                 </div>
+                <div class="col-md-8 profile-right">
+                    <p>性    别: </p>
+                    <p>个性签名: </p>
+                </div>
+                <div class="col-md-12 profile-footer"></div>
             </div>
         </div>
         <div class="col-md-12 activities-list">
             <div class="activities-list-header">最新动态</div>
             <div class="activities-list-body">
-                {% if activities.__len__() == 0 %}
-                    <h4>暂无动态</h4>
+                {% if activities | length == 0 %}
+                    <div class="item-container">
+                        <div class="item-full">
+                            <div class="item-title">暂无动态</div>
+                        </div>
+                    </div>
                 {% else %}
                     {% include "_activities.html" %}
                 {% endif %}
@@ -30,12 +37,4 @@
 {% endblock %}
 
 {% block page_side %}
-    <div class="row follow-count">
-        <div class="col-md-4">
-        </div>
-        <div class="col-md-4">
-        关注了<br>0 人</div>
-        <div class="col-md-4">
-        关注者<br>0 人</div>
-    </div>
 {% endblock %}
