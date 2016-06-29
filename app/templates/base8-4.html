@@ -3,29 +3,16 @@
 {% block content %}
     <div class="container">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-8 page-content">
             {% include "_flashed_msg.html" %}
             {% block page_content %}{% endblock %}
         </div>
         <div class="col-md-4 side-bar">
-        {% block page_side %}
-            {% if current_user is not none %}
-            <img class="img-rounded center-block side-portrait" src="{{ current_user.gravatar(size=200) }}" />
-            <div class="row follow-count">
-                <div class="col-md-4">
-                </div>
-                <div class="col-md-4">
-                关注了<br>0 人</div>
-                <div class="col-md-4">
-                关注者<br>0 人</div>
-            </div>
-            {% endif %}
-        {% endblock %}
-            <div>
-                <div class="forum-info">
-                    <div class="forum-info-item">最近加入: {{ new_user.username }}</div>
-                    <div class="forum-info-item">用户人数: {{ user_count }}</div>
-                </div>
+            <div class="row">
+                {% block page_side %}
+                {% include "_portrait.html" %}
+                {% endblock %}
+                {% include "_bbs_info.html" %}
                 {% include "_channels.html" %}
             </div>
         </div>

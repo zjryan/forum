@@ -780,9 +780,8 @@ section.bars .bar-left {
   padding-top: 20px;
   background: #F3F4F8;
   margin-bottom: 40px; }
-section.bars .bar-mid {
+.page-content {
   padding-top: 20px;
-  background: #ffffff;
   margin-bottom: 40px; }
 section.bars .bar-right {
   padding-top: 20px;
@@ -801,7 +800,7 @@ div.channel-list {
   border: 1px solid #d0d0d0;
   border-radius: 3px;
   padding-top: 5%;
-  padding-bottom: 8%;
+  padding-bottom: 3%;
 }
 div.channel-list-caption i.fa {
   margin-right: 13px;
@@ -827,12 +826,46 @@ div.flash-msg {
   border-radius: 7px;
 }
 .add-channel{
-  margin-top: 20px;
+  margin-top: 17px;
+  padding-bottom: 6%;
 }
 div.channel-list i.fa-plus {
   color: #909090;
 }
-
+.side-bar {
+  margin-top: 30px;
+  margin-bottom: 40px;
+}
+.portrait {
+  font-size: 115%;
+  color: #FF5274;
+  border: 1px solid #d0d0d0;
+  border-radius: 3px;
+  padding: 20px 5px 20px 5px;
+}
+.center-block {
+  margin-left: center;
+  margin-right: center;
+}
+.follow-count {
+  padding-top: 20px;
+  padding-left: 15px;
+}
+.follow-item{
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+.forum-info {
+  font-size: 115%;
+  color: #FF5274;
+  border: 1px solid #d0d0d0;
+  border-radius: 3px;
+  margin: 15px 0 15px 0;
+  padding: 15px 0 15px 15px;
+}
+.forum-info-item {
+  padding: 2px 0 2px 0;
+}
 
 /* ==========================================================================
 Footer

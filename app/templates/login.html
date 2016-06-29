@@ -8,6 +8,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3">
+                        {% include "_flashed_msg.html" %}
                         <h2>用户登录</h2>
                         <h3>与世界分享你的装逼经验</h3>
                         <form class="signup-form" action="/login" method="POST" role="form">
@@ -27,6 +28,9 @@
             </div>
         </section>
     </div>
+{% endblock %}
+
+{% block content %}
 {% endblock %}
 
 {% block to_top %}
