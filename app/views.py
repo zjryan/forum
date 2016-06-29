@@ -8,6 +8,7 @@ from flask import request
 from flask import session
 from flask import url_for
 from .models.channel import Channel
+from .models.channel import ChannelPermission
 from .models.comment import Comment
 from .models.user import User
 from .models.user import current_user
@@ -25,7 +26,15 @@ def url_back(route='index'):
 
 @app.route('/')
 def index():
-    posts = Post.query.all()
+    user = current_user()
+    if user is not None and user.is_admin():
+        posts = Post.query.all()
+    else:
+        posts = []
+        channels = Channel.query.filter_by(permission=ChannelPermission.NORMAL[0])
+        for c in channels:
+            p = c.posts
+            posts += p
     posts.sort(key=lambda p: p.created_time, reverse=True)
     return render_template('index.html',
                            posts=posts)
