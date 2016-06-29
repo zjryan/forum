@@ -3,7 +3,7 @@
 from .model import Model
 from .model import db
 
-from sqlalchemy import sql
+import time
 
 
 class Post(db.Model, Model):
@@ -11,8 +11,7 @@ class Post(db.Model, Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String())
     content = db.Column(db.String())
-    created_time = db.Column(db.DateTime(timezone=True),
-                             default=sql.func.now())
+    created_time = db.Column(db.Integer, default=0)
 
     channel_id = db.Column(db.Integer, db.ForeignKey('channels.id'))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
@@ -23,6 +22,7 @@ class Post(db.Model, Model):
         super(Post, self).__init__()
         self.title = form.get('title', '')
         self.content = form.get('content', '')
+        self.created_time = time.time()
 
     def post_valid(self):
         return self.title != '' and self.content != ''

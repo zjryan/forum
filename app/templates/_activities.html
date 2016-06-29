@@ -22,7 +22,7 @@
                     {{ a.comments | length }} 条评论 |
                     <a href="#">删除</a> |
                     <a href="#">编辑</a> |
-                    发表时间: {{ a.created_time }}
+                    发表时间: {{ a.created_time | format_time }}
                 </div>
             {% elif item_name == 'comment' %}
                 {% set content = item[1] %}
@@ -35,7 +35,7 @@
                 <div class="item-footer">
                     <a href="#">删除</a> |
                     <a href="#">编辑</a> |
-                    发表时间: {{ a.created_time }}
+                    发表时间: {{ a.created_time | format_time }}
                 </div>
             {% endif %}
 

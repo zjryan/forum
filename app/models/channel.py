@@ -3,7 +3,7 @@
 from .model import Model
 from .model import db
 
-from sqlalchemy import sql
+import time
 
 
 class ChannelPermission:
@@ -16,8 +16,7 @@ class Channel(db.Model, Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(), default=ChannelPermission.NORMAL[0])
     permission = db.Column(db.Integer)
-    created_time = db.Column(db.DateTime(timezone=True),
-                             default=sql.func.now())
+    created_time = db.Column(db.Integer, default=0)
 
     posts = db.relationship('Post', backref='channel')
 
@@ -25,6 +24,7 @@ class Channel(db.Model, Model):
         super(Channel, self).__init__()
         self.name = form.get('name', '')
         self.permission = form.get('permission', ChannelPermission.NORMAL[0])
+        self.created_time = time.time()
 
     @staticmethod
     def add_valid(form):

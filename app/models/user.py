@@ -8,7 +8,7 @@ from app.utilities import email_validate
 from app.utilities import generate_password_hash
 from app.utilities import check_password_hash
 
-from sqlalchemy import sql
+import time
 from flask import session
 from hashlib import md5
 
@@ -20,8 +20,7 @@ class User(db.Model, Model):
     password_hash = db.Column(db.String())
     email = db.Column(db.String(), unique=True)
     avatar_hash = db.Column(db.String())
-    created_time = db.Column(db.DateTime(timezone=True),
-                             default=sql.func.now())
+    created_time = db.Column(db.Integer, default=0)
 
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
 
@@ -46,6 +45,7 @@ class User(db.Model, Model):
         self.email = form.get('email', '')
         self.set_user_role()
         self.cache_avatar()
+        self.created_time = time.time()
 
     def login_valid(self, form):
         username = form.get('username', '')

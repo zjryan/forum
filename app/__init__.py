@@ -25,6 +25,8 @@ from app.models.user import User
 from app.models.post import Post
 from app.models.comment import Comment
 
+from app import filters
+
 
 @app.context_processor
 def current_user_processor():
@@ -63,3 +65,5 @@ def post_processor():
 def comment_processor():
     comment_count = Comment.query.count()
     return dict(comment_count=comment_count)
+
+

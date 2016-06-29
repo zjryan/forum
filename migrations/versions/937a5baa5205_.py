@@ -1,13 +1,13 @@
 """empty message
 
-Revision ID: 0247e1ccc883
+Revision ID: 937a5baa5205
 Revises: None
-Create Date: 2016-06-28 15:45:31.993822
+Create Date: 2016-06-29 16:34:12.791326
 
 """
 
 # revision identifiers, used by Alembic.
-revision = '0247e1ccc883'
+revision = '937a5baa5205'
 down_revision = None
 
 from alembic import op
@@ -20,7 +20,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(), nullable=True),
     sa.Column('permission', sa.Integer(), nullable=True),
-    sa.Column('created_time', sa.DateTime(timezone=True), nullable=True),
+    sa.Column('created_time', sa.Integer(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('roles',
@@ -38,7 +38,7 @@ def upgrade():
     sa.Column('password_hash', sa.String(), nullable=True),
     sa.Column('email', sa.String(), nullable=True),
     sa.Column('avatar_hash', sa.String(), nullable=True),
-    sa.Column('created_time', sa.DateTime(timezone=True), nullable=True),
+    sa.Column('created_time', sa.Integer(), nullable=True),
     sa.Column('role_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['role_id'], ['roles.id'], ),
     sa.PrimaryKeyConstraint('id'),
@@ -49,7 +49,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('title', sa.String(), nullable=True),
     sa.Column('content', sa.String(), nullable=True),
-    sa.Column('created_time', sa.DateTime(timezone=True), nullable=True),
+    sa.Column('created_time', sa.Integer(), nullable=True),
     sa.Column('channel_id', sa.Integer(), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['channel_id'], ['channels.id'], ),
@@ -59,7 +59,7 @@ def upgrade():
     op.create_table('comments',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('content', sa.String(), nullable=True),
-    sa.Column('created_time', sa.DateTime(timezone=True), nullable=True),
+    sa.Column('created_time', sa.Integer(), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.Column('post_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['post_id'], ['posts.id'], ),

@@ -3,15 +3,14 @@
 from .model import Model
 from .model import db
 
-from sqlalchemy import sql
+import time
 
 
 class Comment(db.Model, Model):
     __tablename__ = 'comments'
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String())
-    created_time = db.Column(db.DateTime(timezone=True),
-                             default=sql.func.now())
+    created_time = db.Column(db.Integer, default=0)
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
@@ -19,6 +18,7 @@ class Comment(db.Model, Model):
     def __init__(self, form):
         super(Comment, self).__init__()
         self.content = form.get('content', '')
+        self.created_time = time.time()
 
     def comment_valid(self):
         return self.content != ''

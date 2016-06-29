@@ -20,7 +20,7 @@
                     <th>1</th>
                     <td><a href="/post/{{ p.id }}">{{ p.title }}</a></td>
                     <td><a href="/profile/{{ p.author.username }}">{{ p.author.username }}</a></td>
-                    <td>{{ p.created_time }}</td>
+                    <td>{{ p.created_time | format_time }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
