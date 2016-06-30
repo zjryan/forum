@@ -935,20 +935,28 @@ div.item-container .item-footer {
   color: #a0a0a0;
   float: right;
 }
-div.item-container.profile-card {
+div.profile-card {
   margin-top: 25px;
-  padding: 3%;
+  margin-bottom: 20px;
+  margin-left: 15px;
+  width: 96%;
+  padding: 4%;
+  font-size: 140%;
+  background-color: #ffffff;
+  border-right: 2px solid #c0c0c0;
+  border-bottom: 2px solid #c0c0c0;
+  border-radius: 20px;
 }
-div.item-container.profile-card .profile-header {
+.profile-card .profile-header {
   font-size: 155%;
   font-weight: bold;
   padding-left: 4%;
   margin-bottom: 3%;
 }
-div.item-container.profile-card .profile-left {
-  border-right: 1px solid #f0f0f0;
+.profile-card .profile-left {
+  border-right: 2px solid #f0f0f0;
 }
-div.item-container.profile-card .profile-footer {
+.profile-card .profile-footer {
   padding-bottom: 15px;
 }
 .post-table {

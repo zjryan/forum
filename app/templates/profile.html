@@ -3,35 +3,33 @@
 {% block title %}{{ user.username }} - 用户资料{% endblock %}
 
 {% block page_content %}
-    <div class="row">
-        <div class="col-md-12 item-container profile-card">
-            <div class="row">
-                <div class="col-md-12 profile-header">
-                    {{ user.username }} ，
-                </div>
-                <div class="col-md-4 profile-left">
-                    <img class="img-rounded center-block" src="{{ user.gravatar(size=180) }}" />
-                 </div>
-                <div class="col-md-8 profile-right">
-                    <p>性    别: </p>
-                    <p>个性签名: </p>
-                </div>
-                <div class="col-md-12 profile-footer"></div>
+    <div class="col-md-10 profile-card">
+        <div class="row">
+            <div class="col-md-12 profile-header">
+                {{ user.username }} ，
             </div>
+            <div class="col-md-4 profile-left">
+                <img class="img-rounded center-block" src="{{ user.gravatar(size=180) }}" />
+             </div>
+            <div class="col-md-8 profile-right">
+                <p>性    别: </p>
+                <p>个性签名: </p>
+            </div>
+            <div class="col-md-12 profile-footer"></div>
         </div>
-        <div class="col-md-12 activities-list">
-            <div class="activities-list-header">最新动态</div>
-            <div class="activities-list-body">
-                {% if activities | length == 0 %}
-                    <div class="item-container">
-                        <div class="item-full">
-                            <div class="item-title">暂无动态</div>
-                        </div>
+    </div>
+    <div class="col-md-12 activities-list">
+        <div class="activities-list-header">最新动态</div>
+        <div class="activities-list-body">
+            {% if activities | length == 0 %}
+                <div class="item-container">
+                    <div class="item-full">
+                        <div class="item-title">暂无动态</div>
                     </div>
-                {% else %}
-                    {% include "_activities.html" %}
-                {% endif %}
-            </div>
+                </div>
+            {% else %}
+                {% include "_activities.html" %}
+            {% endif %}
         </div>
     </div>
 {% endblock %}

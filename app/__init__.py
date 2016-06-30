@@ -21,5 +21,3 @@ from app import views
 from app import filters
 from app import context_processers
 
-
-
