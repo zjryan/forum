@@ -16,7 +16,12 @@
             </div>
             <div class="col-md-10 item-right">
                 <div class="item-header">
-                    {{ post_author.username }} 在 {{ post_channel }} 内发表了
+                    <div class="col-md-9">
+                        {{ post_author.username }} 在 {{ post_channel }} 内发表了
+                    </div>
+                    <div class="col-md-3 item-date">
+                        {{ post.created_time | from_now }}
+                    </div>
                 </div>
                 <div class="item-body"></div>
                     <div class="item-title">

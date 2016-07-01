@@ -868,9 +868,10 @@ div.channel-list i.fa-plus {
   padding: 4px 0 4px 0;
 }
 .activities-list-header {
-  font-size: 150%;
+  font-size: 180%;
   font-weight: bold;
   padding-left: 3%;
+  margin-bottom: 12px;
 }
 
 /* ==========================================================================
@@ -912,8 +913,13 @@ div.item-container .item-right{
   padding-left: 3%;
 }
 div.item-container .item-header {
-  padding: 2px 0 2px 0;
+  padding: 2px 0 12px 0;
   color: #a0a0a0;
+
+}
+div.item-container .item-header .item-date {
+  text-align: right;
+  font-size: 100%;
 }
 div.item-container .item-body {
   font-size: 115%;
