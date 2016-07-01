@@ -15,7 +15,7 @@
                 {{ content }}
             </div>
             <div class="post-detail-info">
-                作者： {{ author }} &nbsp; | &nbsp; 发表于： {{ post.created_time }} &nbsp; | &nbsp; 最后更新于：
+                作者： {{ author }} &nbsp; | &nbsp; 发表于： {{ post.created_time | format_time }} &nbsp; | &nbsp; 最后更新于：
             </div>
         </div>
 
@@ -37,7 +37,7 @@
         <div class="col-lg-10">
             <input class="form-control input-lg" name="content" placeholder="说点什么...">
         </div>&nbsp;
-        <button type="submit" class="btn btn-primary btn-lg">发表</button>
+        <button type="submit" class="btn btn-fill btn-middle btn-lg">发表</button>
         </form>
     </div>
     {% endif %}

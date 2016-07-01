@@ -901,6 +901,28 @@ div.item-container .item-left{
   border-right: 1px solid #d0d0d0;
   min-height: 150px;
 }
+div.comment-container {
+  border-radius: 65px;
+  padding: 1%;
+}
+div.comment-left {
+  padding: 2% 0 0 0;
+}
+div.comment-right {
+  padding: 2% 0 0 1%;
+}
+div.comment-footer {
+  padding: 0 6% 2px 0;
+}
+div.comment-list-header {
+  padding: 2%;
+  margin: 10px 0 0 10px;
+  font-size: 140%;
+  font-weight: bold;
+}
+div.comment-form {
+  margin: 20px 0 0 30px;
+}
 div.item-container .item-portrait .round {
   border-radius: 30px;
 }
@@ -913,9 +935,8 @@ div.item-container .item-right{
   padding-left: 3%;
 }
 div.item-container .item-header {
-  padding: 2px 0 12px 0;
+  padding: 5px 0 12px 0;
   color: #a0a0a0;
-
 }
 div.item-container .item-header .item-date {
   text-align: right;
@@ -936,10 +957,13 @@ div.item-container .item-content {
   padding-bottom: 3px;
   min-height: 75px;
 }
+div.form-bg {
+  background-color: transparent;
+}
 div.item-container .item-footer {
   min-height: 20px;
   color: #a0a0a0;
-  float: right;
+  text-align: right;
 }
 div.profile-card {
   margin-top: 25px;
@@ -981,6 +1005,29 @@ div.profile-card {
 .post-table tbody {
   padding-top: 10%;
   padding-bottom: 2%;
+}
+div.post-detail-content {
+  background-color: #ffffff;
+  border-radius: 8px;
+  border-right: 2px solid #c0c0c0;
+  border-bottom: 2px solid #c0c0c0;
+  margin-left: 15px;
+  margin-top: 10px;
+  width: 96%;
+  padding: 3% 3% 2% 3%;
+  font-size: 110%;
+}
+div.post-detail-title {
+  font-size: 150%;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+div.post-detail-body {
+  font-size: 125%;
+  margin-bottom: 15px;
+}
+div.post-detail-info {
+  text-align: right;
 }
 
 /* ==========================================================================

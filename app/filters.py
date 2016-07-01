@@ -18,7 +18,7 @@ def format_time(timestamp):
     now = time.time()
     delta_time = now - timestamp
     ret = '{} {}前'
-    if delta_time < 5:
+    if delta_time < 10:
         ret = '刚刚'
     elif delta_time < 60:
         ret = ret.format(int(delta_time), '秒')
