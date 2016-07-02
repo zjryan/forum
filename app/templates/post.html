@@ -1,4 +1,5 @@
 {% extends 'base8-4.html' %}
+{% import '_macros.html' as macros %}
 
 {% block title %} 帖子 - {{ post.title }}{% endblock %}
 
@@ -25,7 +26,7 @@
                 {{ comment_count }}条回复
             </div>
             {% if comment_count > 0 %}
-            <div class="comment-list-body">
+            <div class="comment-list-body" id="id-text-commentbody">
                 {% include "_comments.html" %}
             </div>
             {% endif %}
@@ -33,12 +34,71 @@
     </div>
     {% if current_user is not none %}
     <div class="comment-form">
-        <form class="form-horizontal" action="{{ post.id }}/add_comment" method="POST">
+        <form class="form-horizontal">
         <div class="col-lg-10">
-            <input class="form-control input-lg" name="content" placeholder="说点什么...">
+
         </div>&nbsp;
-        <button type="submit" class="btn btn-fill btn-middle btn-lg">发表</button>
         </form>
+        <p id='id-p-info'></p>
+        <input id="id-text-content" class="form-control input-lg" name="content" placeholder="说点什么...">
+        <button id="id-button-submitcomment" type="submit" class="btn btn-fill btn-middle btn-lg">发表</button>
     </div>
     {% endif %}
+{% endblock %}
+
+{% block script %}
+{{ super() }}
+<script>
+    $('#id-button-submitcomment').on('click', function(){
+      var url = '/add_comment';
+      var commentContent = $('#id-text-content').val();
+      var data = {
+        content: commentContent,
+        postId: {{ post.id }},
+      };
+      postData = JSON.stringify(data);
+      var request = {
+        url: url,
+        data: postData,
+        type: 'post',
+        contentType: 'application/json',
+        success: function(data) {
+          var resp = data
+          console.log('服务器返回的数据是', resp);
+          $('#id-p-info').text(resp.msg);
+          if (resp.success) {
+            var comment = resp.data
+            var commentHTML = (
+            `
+              <div class="col-md-12 item-container comment-container">
+                  <div class="row">
+                      <div class="col-md-12">
+                          <div class="col-md-2 comment-left">
+                              <div class="item-portrait">
+                                  <img class="img-rounded center-block round" src="${ comment.author.portrait }" />
+                              </div>
+                              <div class="item-author">
+                                  <a href="/profile/${ comment.author.username }">${ comment.author.username }</a>
+                              </div>
+                          </div>
+                          <div class="col-md-10 comment-right">
+                              ${ comment.content }
+                          </div>
+                      </div>
+                      <div class="col-md-12 item-footer comment-footer">
+                          <a href="#">编辑</a> &nbsp; |&nbsp;
+                          <a href="#">删除</a> &nbsp; |&nbsp;
+                          发表于： ${ comment.created_time }
+                      </div>
+                  </div>
+              </div>
+            `
+            );
+            $('#id-text-commentbody').append(commentHTML);
+          }
+        }
+      };
+      $.ajax(request)
+    });
+</script>
 {% endblock %}

@@ -1,27 +1,4 @@
+{% import '_macros.html' as macros %}
 {% for c in comments %}
-    {% set author = c.author.username %}
-    {% set content = c.content %}
-    {% set created_time = c.created_time %}
-    <div class="col-md-12 item-container comment-container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="col-md-2 comment-left">
-                    <div class="item-portrait">
-                        <img class="img-rounded center-block round" src="{{ c.author.gravatar(size=60) }}" />
-                    </div>
-                    <div class="item-author">
-                        <a href="/profile/{{ author }}">{{ author }}</a>
-                    </div>
-                </div>
-                <div class="col-md-10 comment-right">
-                    {{ content }}
-                </div>
-            </div>
-            <div class="col-md-12 item-footer comment-footer">
-                <a href="#">编辑</a> &nbsp; |&nbsp;
-                <a href="{{ url_for('delete_comment', id=c.id) }}">删除</a> &nbsp; |&nbsp;
-                发表于： {{ c.created_time | format_time }}
-            </div>
-        </div>
-    </div>
+    {{ macros.comment_container(c) }}
 {% endfor %}

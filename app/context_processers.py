@@ -11,7 +11,10 @@ from app.models.comment import Comment
 
 @app.context_processor
 def current_user_processor():
-    return dict(current_user=current_user())
+    user = current_user()
+    if user is not None:
+        user = user.dict(size=200)
+    return dict(current_user=user)
 
 
 @app.context_processor

@@ -9,6 +9,7 @@ from app.utilities import generate_password_hash
 from app.utilities import check_password_hash
 
 import time
+import json
 from flask import session
 from hashlib import md5
 
@@ -107,6 +108,26 @@ class User(db.Model, Model):
     def cache_avatar(self):
         if self.email is not None and self.avatar_hash is None:
             self.avatar_hash = md5(self.email.encode('utf-8')).hexdigest()
+
+    def dict(self, **kwargs):
+        img = self.gravatar(kwargs.get('size', 200))
+        d = {
+            'id': self.id,
+            'username': self.username,
+            'email': self.email,
+            'created_time': self.created_time,
+            'portrait': img,
+            'role_id': self.role_id,
+            'is_admin': self.is_admin(),
+            'can_comment': self.can_comment(),
+            'can_write_post': self.can_write_post(),
+            'can_read': self.can_read(),
+        }
+        return d
+
+    def json(self, **kwargs):
+        d = self.dict(**kwargs)
+        return json.dumps(d)
 
 
 def current_user():

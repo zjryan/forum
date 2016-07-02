@@ -34,7 +34,7 @@
                             <nav>
                                 <ul class="primary-nav">
                                     <li><a href="/">主&nbsp;页</a></li>
-                                    {% if current_user is not none and current_user.is_admin() %}
+                                    {% if current_user is not none and current_user.is_admin %}
                                     <li><a href="/admin">管理界面</a></li>
                                     {% endif %}
                                 </ul>

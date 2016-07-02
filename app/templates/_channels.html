@@ -12,7 +12,7 @@
         {% endfor %}
     </div>
 
-    {% if current_user is not none and current_user.is_admin() %}
+    {% if current_user is not none and current_user.is_admin %}
         <div class="channel-list-caption">
             <i class="fa fa-list-alt"></i> 管理员频道
         </div>
@@ -27,7 +27,7 @@
     {% endif %}
 </div>
 
-{% if current_user is not none and current_user.is_admin() %}
+{% if current_user is not none and current_user.is_admin %}
 <div class="col-md-10 channel-list add-channel">
     <div class="channel-list-caption">
         <i class="fa fa-plus-square-o"></i> 添加频道

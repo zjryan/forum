@@ -4,6 +4,7 @@ from .model import Model
 from .model import db
 
 import time
+import json
 
 
 class Comment(db.Model, Model):
@@ -36,3 +37,18 @@ class Comment(db.Model, Model):
         else:
             content = self.content
         return (name, content)
+
+    def dict(self, **kwargs):
+        d = {
+            'id': self.id,
+            'content': self.content,
+            'created_time': self.created_time,
+            'user_id': self.user_id,
+            'post_id': self.post_id,
+            'author': self.author.dict(kwargs.get('size', 60)),
+        }
+        return d
+
+    def json(self):
+        d = self.dict()
+        return json.dumps(d)

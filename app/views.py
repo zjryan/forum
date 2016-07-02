@@ -7,6 +7,7 @@ from flask import render_template
 from flask import request
 from flask import session
 from flask import url_for
+from flask import jsonify
 from .models.channel import Channel
 from .models.channel import ChannelPermission
 from .models.comment import Comment
@@ -109,7 +110,7 @@ def post_view(id):
                            post=post,
                            comments=comments)
 
-
+'''
 @app.route('/post/<int:post_id>/add_comment', methods=['POST'])
 def add_comment(post_id):
     post = Post.query.get(post_id)
@@ -127,6 +128,40 @@ def add_comment(post_id):
         log('回复失败')
         flash('回复失败')
     return redirect(url_for('post_view', id=post_id))
+'''
+
+
+@app.route('/add_comment', methods=['POST'])
+def comment_add():
+    comment_info = request.get_json()
+    post_id = comment_info.get('postId', 0)
+    content = comment_info.get('content', '')
+    response = {
+        'success': False,
+        'msg': '发表失败，',
+        'data' : None,
+    }
+    if post_id == 0 or Post.query.get(post_id) is None:
+        response['msg'] += '帖子不存在'
+    elif content == '':
+        response['msg'] += '内容不能为空'
+    else:
+        comment = Comment(comment_info)
+        user = current_user()
+        comment.set_author(user.id)
+        comment.set_post(post_id)
+        comment.save()
+        response['success'] = True
+        response['msg'] = '发表评论成功'
+        response['data'] = {
+            'id': comment.id,
+            'content': comment.content,
+            'created_time': comment.created_time,
+            'user_id': comment.user_id,
+            'post_id': comment.post_id,
+            'author': comment.author.dict(),
+        }
+    return jsonify(response)
 
 
 @app.route('/comment/delete/<int:id>')
