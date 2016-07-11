@@ -25,3 +25,6 @@ def url_back(route='index'):
                         or url_for(route)
 
 
+@app.route('/')
+def index():
+    return render_template('index.html')
