@@ -5,12 +5,14 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_script import Manager
 from flask_migrate import Migrate
 from flask_migrate import MigrateCommand
+from .auth import auth as auth_blueprint
 
 
 app = Flask(__name__)
 app.secret_key = 'jgn3-kigf-4bgk-0ndv'
 app.config.from_object('config')
 db = SQLAlchemy(app)
+app.register_blueprint(auth_blueprint)
 manager = Manager(app)
 migrate = Migrate(app, db)
 
