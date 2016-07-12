@@ -19,6 +19,7 @@ var formFromKeys = function (keys, prefix) {
         }
         form[key] = value;
     }
+    return form;
 };
 
 var vip = {
@@ -62,11 +63,11 @@ vip.post = function(url, form, success, error) {
 };
 
 vip.register = function(form, success, error) {
-    var url = '/register';
+    var url = '/accounts/register';
     this.post(url, form, success, error);
 };
 
 vip.login = function(form, success, error) {
-    var url = '/login';
+    var url = '/accounts/login';
     this.post(url, form, success, error);
 };

@@ -1,7 +1,7 @@
 # encoding: utf-8
 
-from .model import Model
-from .model import db
+from . import Model
+from . import db
 from .role import Role
 from .role import Permission
 from app.utilities import email_validate
@@ -109,31 +109,18 @@ class User(db.Model, Model):
         if self.email is not None and self.avatar_hash is None:
             self.avatar_hash = md5(self.email.encode('utf-8')).hexdigest()
 
-    def dict(self, **kwargs):
-        img = self.gravatar(kwargs.get('size', 200))
-        d = {
-            'id': self.id,
-            'username': self.username,
-            'email': self.email,
-            'created_time': self.created_time,
-            'portrait': img,
-            'role_id': self.role_id,
-            'is_admin': self.is_admin(),
-            'can_comment': self.can_comment(),
-            'can_write_post': self.can_write_post(),
-            'can_read': self.can_read(),
-        }
-        return d
+    @staticmethod
+    def user_by_name(username):
+        return User.query.filter_by(username=username).first()
 
-    def json(self, **kwargs):
-        d = self.dict(**kwargs)
-        return json.dumps(d)
+    @staticmethod
+    def user_by_id(id):
+        return User.query.get_or_404(id)
 
 
 def current_user():
-    id = session.get('user_key', None)
-
+    id = session.get('user_id', None)
     user = None
     if id is not None:
-        user = User.query.get(id)
+        user = User.user_by_id(id)
     return user

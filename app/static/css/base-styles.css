@@ -8,7 +8,7 @@
     justify-content: center;
 }
 .form-flex {
-    margin-top: 70px;
+    margin-top: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,8 +16,8 @@
     min-width: 400px;
     min-height: 400px;
     border-radius: 12px;
+    border: solid 2px #f0f0f0;
     padding: 3%;
-    background-color: #e8e8e8;
 }
 .form-flex .form-flex-item {
     margin: 5px 0 5px 0;
@@ -25,8 +25,7 @@
 }
 .form-flex .form-flex-item .title{
     font-size: 220%;
-    font-weight: bold;
-    color: dodgerblue;
+    font-weight: bolder;
 }
 .form-flex .form-flex-item .description{
     margin-bottom: 45px;
@@ -39,11 +38,11 @@
     display: flex;
     flex-direction: row;
 }
-.form-flex-tab .a {
+.form-flex-item .form-flex-tab a {
     text-decoration: none;
     color: #000;
 }
-.form-flex-tab .a:active {
+.form-flex-item .form-flex-tab .active {
     color: dodgerblue;
 }
 .form-flex-tab .a:hover{

@@ -81,7 +81,7 @@
     var login = function () {
         var form = loginForm();
         var success = function (r) {
-            login('login, ', r);
+            log('login, ', r);
             if (r.success) {
                 log(r.next);
                 window.location.href = r.next;
@@ -96,7 +96,7 @@
         vip.login(form, success, error);
     };
 
-    var bindAction = function() {
+    var bindActions = function() {
         $('#id-button-register').on('click', function () {
             register();
         });
@@ -108,7 +108,7 @@
 
     var __main = function () {
         setup();
-        bindAction();
+        bindActions();
         $('#id-a-login').click();
     };
 

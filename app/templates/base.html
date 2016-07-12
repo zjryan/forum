@@ -12,7 +12,7 @@
 <body>
 {% block navbar %}
 <div class="header">
-    <div class="navbar navbar-default" role="navigation">
+    <div class="navbar navbar-inverse" role="navigation">
         <div class="container">
             <div class="navbar-header">
             <button type="button" class="navbar-toggle"
@@ -41,8 +41,8 @@
                             </ul>
                         </li>
                     {% else %}
-                        <li><a href="#">注册</a></li>
-                        <li><a href="#">登录</a></li>
+                        <li><a href="/accounts/#register">注册</a></li>
+                        <li><a href="/accounts/#login">登录</a></li>
                     {% endif %}
                 </ul>
             </div>

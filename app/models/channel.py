@@ -1,7 +1,7 @@
 # encoding: utf-8
 
-from .model import Model
-from .model import db
+from . import Model
+from . import db
 
 import time
 

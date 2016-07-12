@@ -12,8 +12,6 @@ from app.models.comment import Comment
 @app.context_processor
 def current_user_processor():
     user = current_user()
-    if user is not None:
-        user = user.dict(size=200)
     return dict(current_user=user)
 
 
