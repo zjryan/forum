@@ -22,17 +22,17 @@ var formFromKeys = function (keys, prefix) {
     return form;
 };
 
-var vip = {
+var bbs = {
     data: {}
 };
 
-vip.ajax = function (url, method, form, success, error) {
+bbs.ajax = function (url, method, form, success, error) {
     var request = {
         url: url,
         type: method,
         contentType: 'application/json',
         success: function (r) {
-            log('vip post success', url, r);
+            log('bbs post success', url, r);
             success(r);
         },
         error: function (err) {
@@ -40,7 +40,7 @@ vip.ajax = function (url, method, form, success, error) {
                 success: false,
                 data: err
             };
-            log('vip post err', url, err);
+            log('bbs post err', url, err);
             error(r);
         }
     };
@@ -51,23 +51,23 @@ vip.ajax = function (url, method, form, success, error) {
     $.ajax(request);
 };
 
-vip.get = function (url, response) {
+bbs.get = function (url, response) {
     var method = 'get';
     var form = {};
     this.ajax(url, method, form, response, response);
 };
 
-vip.post = function(url, form, success, error) {
+bbs.post = function(url, form, success, error) {
     var method = 'post';
     this.ajax(url, method, form, success, error);
 };
 
-vip.register = function(form, success, error) {
+bbs.register = function(form, success, error) {
     var url = '/accounts/register';
     this.post(url, form, success, error);
 };
 
-vip.login = function(form, success, error) {
+bbs.login = function(form, success, error) {
     var url = '/accounts/login';
     this.post(url, form, success, error);
 };

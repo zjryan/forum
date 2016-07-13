@@ -2,9 +2,6 @@
 
 {% block title %}用户登录{% endblock %}
 
-{% block navbar %}
-{% endblock %}
-
 {% block script %}
 {{ super() }}
 <script src="../static/js/api.js"></script>
@@ -61,6 +58,17 @@
     };
 
     // actions
+    var alertMessage = function (msg) {
+        html = '<div class="alert alert-danger" role="alert">' +
+                '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
+                msg + '</div>';
+        $('#id-div-alert').append(html);
+    };
+
+    var dismissAlert = function () {
+        $('#id-div-alert').empty();
+    };
+
     var register = function () {
         var form = registerForm();
         var success = function (r) {
@@ -69,13 +77,13 @@
                 log(r.next);
                 window.location.href = r.next;
             } else {
-                alert(r.message);
+                alertMessage(r.message)
             }
         };
         var error = function (err) {
             log('reg, ', err);
         };
-        vip.register(form, success, error);
+        bbs.register(form, success, error);
     };
 
     var login = function () {
@@ -86,22 +94,24 @@
                 log(r.next);
                 window.location.href = r.next;
             } else {
-                alert(r.message);
+                alertMessage(r.message)
             }
         };
         var error = function (err) {
             log('login, ', err);
             alert(err);
         };
-        vip.login(form, success, error);
+        bbs.login(form, success, error);
     };
 
     var bindActions = function() {
         $('#id-button-register').on('click', function () {
+            dismissAlert();
             register();
         });
 
         $('#id-button-login').on('click', function () {
+            dismissAlert();
             login();
         });
     };
@@ -123,6 +133,8 @@
     <div class="form-flex">
         <div class="form-flex-item"><div class="title">COCODE 论坛</div></div>
         <div class="form-flex-item"><div class="description">与世界分享你的装逼经验</div></div>
+        <div class="form-flex-item" id="id-div-alert">
+        </div>
         <div class="form-flex-item">
             <div class="form-flex-tab">
                 <a id="id-a-signup" href="#register">注册</a>
