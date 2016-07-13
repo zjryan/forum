@@ -4,7 +4,9 @@ from flask import render_template
 from flask import url_for
 from flask import request
 from flask import jsonify
+from flask import redirect
 from ..models import User
+from ..decorators import login_required
 
 
 @accounts.route('/')
@@ -33,3 +35,10 @@ def login():
         r['message'] = '登录失败'
     print(r)
     return jsonify(r)
+
+
+@accounts.route('/logout')
+@login_required
+def logout():
+    session.clear()
+    return redirect(url_for('index'))

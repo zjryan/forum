@@ -35,14 +35,13 @@
                             {{ current_user.username }}<b class="caret"></b>
                         </a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">用户资料</a></li>
+                                <li><a href="#"><div class="fa fa-user"></div> 用户资料</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="#">登出用户</a></li>
+                                <li><a href="/accounts/logout"><div class="fa fa-power-off"></div> 登出用户</a></li>
                             </ul>
                         </li>
                     {% else %}
-                        <li><a href="/accounts/#register">注册</a></li>
-                        <li><a href="/accounts/#login">登录</a></li>
+                        <li><a href="/accounts">用户登录</a></li>
                     {% endif %}
                 </ul>
             </div>
@@ -62,5 +61,6 @@
 </body>
 {% block script %}
 <script src="../static/js/jquery-3.0.0.min.js"></script>
+<script src="../static/js/bootstrap.js"></script>
 {% endblock %}
 </html>

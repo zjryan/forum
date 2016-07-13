@@ -20,5 +20,6 @@ from .channel import Channel
 from .channel import ChannelPermission
 from .comment import Comment
 from .user import User
+from .user import current_user
 from .post import Post
 from .role import Role

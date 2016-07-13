@@ -1,6 +1,9 @@
 .header .navbar {
     font-size: 120%;
 }
+.fa {
+    margin-right: 12px;
+}
 /*************** login ***************/
 .form-flex-container {
     display: flex;
