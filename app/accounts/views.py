@@ -7,6 +7,7 @@ from flask import jsonify
 from flask import redirect
 from ..models import User
 from ..decorators import login_required
+from ..utilities import log
 
 
 @accounts.route('/')
@@ -42,3 +43,26 @@ def login():
 def logout():
     session.clear()
     return redirect(url_for('index'))
+
+
+@accounts.route('/register', methods=['POST'])
+def register():
+    form = request.get_json()
+    success, message = User.register_valid(form)
+
+    r = {
+        'success': True,
+        'message': message,
+    }
+    if success:
+        user = User(form)
+        user.save()
+        log('注册成功')
+        r['success'] = True
+        r['next'] = request.args.get('next', url_for('index'))
+        session.permanent = True
+        session['user_id'] = user.id
+    else:
+        log('注册失败', form)
+        r['success'] = False
+    return jsonify(r)
