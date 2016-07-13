@@ -35,7 +35,7 @@
                             {{ current_user.username }}<b class="caret"></b>
                         </a>
                             <ul class="dropdown-menu">
-                                <li><a href="#"><div class="fa fa-user"></div> 用户资料</a></li>
+                                <li><a href="#"><div class="fa fa-user"></div>用户资料</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="/accounts/logout"><div class="fa fa-power-off"></div> 登出用户</a></li>
                             </ul>
@@ -58,6 +58,20 @@
     </div>
 </div>
 {% endblock %}
+
+{% block footer %}
+<hr>
+<div class="container">
+    <footer>
+    <div class="row">
+        <div class="col-lg-12">
+            <p>Copyright &copy; Cocode BBS by Ryan 2016</p>
+        </div>
+    </div>
+    </footer>
+</div>
+{% endblock %}
+
 </body>
 {% block script %}
 <script src="../static/js/jquery-3.0.0.min.js"></script>

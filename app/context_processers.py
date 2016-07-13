@@ -18,13 +18,13 @@ def current_user_processor():
 @app.context_processor
 def channel_processor():
     channels = Channel.query.all()
-    permissions = [
-        ChannelPermission.NORMAL,
-        ChannelPermission.ADMIN,
-    ]
+    permissions = {
+        'NORMAL': ChannelPermission.NORMAL,
+        'ADMIN': ChannelPermission.ADMIN,
+    }
     dic = {
         'channels': channels,
-        'permissions': permissions,
+        'channel_permissions': permissions,
     }
     return dict(**dic)
 

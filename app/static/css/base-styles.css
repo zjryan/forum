@@ -12,29 +12,30 @@
 }
 .form-flex {
     margin-top: 100px;
+    margin-bottom: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     min-width: 400px;
-    min-height: 400px;
+    min-height: 500px;
     border-radius: 12px;
     border: solid 2px #f0f0f0;
-    padding: 3%;
+    padding: 5%;
 }
 .form-flex .form-flex-item {
     margin: 5px 0 5px 0;
     font-size: 125%;
 }
-.form-flex .form-flex-item .title{
+.form-flex .form-flex-item .title {
     font-size: 220%;
     font-weight: bolder;
 }
-.form-flex .form-flex-item .description{
+.form-flex .form-flex-item .description {
     margin-bottom: 45px;
     font-size: 130%;
 }
-.form-flex .form-flex-item .block{
+.form-flex .form-flex-item .block {
     margin-bottom: 15px;
 }
 .form-flex-item .form-flex-tab {
@@ -46,20 +47,20 @@
     color: #000;
 }
 .form-flex-item .form-flex-tab .active {
-    color: dodgerblue;
+    color: rgb(51, 122, 183);
 }
-.form-flex-tab .a:hover{
+.form-flex-tab .a:hover {
     text-decoration: none;
 }
 .form-flex-tab .block {
     margin-left: 20px;
 }
-.form-flex-item .tab-block{
+.form-flex-item .tab-block {
     height: 3px;
     width: 45px;
     position: relative;
     left: 100px;
-    background-color: dodgerblue;
+    background-color: rgb(51, 122, 183);
 }
 .form-flex-item .btn {
     margin-top: 10px;
@@ -67,8 +68,34 @@
     color: white;
     width: 70%;
 }
+.form-flex-item .btn:hover {
+    background-color: rgb(40, 96, 144);
+    color: white;
+}
 .form-flex-item .alert {
     text-align: center;
     font-size: 80%;
-    min-width: 200px;
+    min-width: 280px;
+}
+
+/*************** channel list ***************/
+.channel-title {
+    font-size: 130%;
+    padding: 10px 0 10px;
+}
+ul.channel-list li {
+    font-size: 120%;
+    list-style-type: none;
+    margin: 3px 0 3px;
+}
+ul.channel-list li > a {
+    text-decoration: none;
+    color: rgb(40, 96, 144);
+}
+ul.channel-list li > a:hover {
+    color: rgb(51, 122, 183);
+}
+/*************** footer ***************/
+footer {
+    margin: 50px 0;
 }
