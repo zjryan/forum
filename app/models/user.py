@@ -121,6 +121,10 @@ class User(db.Model, Model):
         if self.email is not None and self.avatar_hash is None:
             self.avatar_hash = md5(self.email.encode('utf-8')).hexdigest()
 
+    def permissions(self):
+        role = Role.role_by_id(self.role_id)
+        return role.permissions
+
     @staticmethod
     def user_by_name(username):
         return User.query.filter_by(username=username).first()

@@ -30,6 +30,11 @@ def channel_processor():
 
 
 @app.context_processor
+def class_processor():
+    return dict(Channel=Channel)
+
+
+@app.context_processor
 def user_processor():
     user_count = User.query.count()
     new_user = User.query.order_by(User.created_time.desc()).first()

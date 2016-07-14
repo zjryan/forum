@@ -1,5 +1,5 @@
 <div class="post-list" id="id-div-post-list">
-    {% for post in channel.posts_sorted_by_time() %}
+    {% for post in Channel.posts_sorted_by_time(posts) %}
     <div class="post-item">
         <div class="post-author">
             <a href="#">

@@ -7,4 +7,9 @@ from . import controllers
 @controllers.route('/channel/<int:id>')
 def channel_view(id):
     channel = Channel.channel_by_id(id)
-    return render_template('channel.html', channel=channel)
+    posts = channel.posts
+    d = dict(
+        posts=posts,
+        channel=channel
+    )
+    return render_template('channel.html', **d)

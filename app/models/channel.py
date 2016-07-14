@@ -39,8 +39,8 @@ class Channel(db.Model, Model):
     def channel_by_id(id):
         return Channel.query.get(id)
 
-    def posts_sorted_by_time(self, reverse=True):
-        posts = self.posts
+    @staticmethod
+    def posts_sorted_by_time(posts, reverse=True):
         posts.sort(key=lambda p: p.created_time, reverse=reverse)
         return posts
 
