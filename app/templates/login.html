@@ -58,17 +58,6 @@
     };
 
     // actions
-    var alertMessage = function (msg) {
-        html = '<div class="alert alert-danger" role="alert">' +
-                '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
-                msg + '</div>';
-        $('#id-div-alert').append(html);
-    };
-
-    var dismissAlert = function () {
-        $('#id-div-alert').empty();
-    };
-
     var register = function () {
         var form = registerForm();
         var success = function (r) {
@@ -133,8 +122,7 @@
     <div class="form-flex">
         <div class="form-flex-item"><div class="title">COCODE 论坛</div></div>
         <div class="form-flex-item"><div class="description">与世界分享你的装逼经验</div></div>
-        <div class="form-flex-item" id="id-div-alert">
-        </div>
+        <div class="form-flex-item" id="id-div-alert"></div>
         <div class="form-flex-item">
             <div class="form-flex-tab">
                 <a id="id-a-signup" href="#register">注册</a>

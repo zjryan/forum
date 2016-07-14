@@ -36,7 +36,7 @@
             if (r.success) {
                 insertTweet(r.data);
             } else {
-                log(r.message);
+                alertMessage(r.message);
             }
         };
         var error = function (err) {
@@ -47,6 +47,7 @@
 
     var bindActions = function () {
         $('#id-button-post-add').on('click', function () {
+            dismissAlert();
             addNewPost();
         });
     };

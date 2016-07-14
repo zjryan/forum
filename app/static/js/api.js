@@ -22,6 +22,17 @@ var formFromKeys = function (keys, prefix) {
     return form;
 };
 
+var alertMessage = function (msg) {
+    html = '<div class="alert alert-danger" role="alert">' +
+            '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
+            msg + '</div>';
+    $('#id-div-alert').append(html);
+};
+
+var dismissAlert = function () {
+    $('#id-div-alert').empty();
+};
+
 var formatTime = function (timestamp) {
     var time = new Date(timestamp * 1000);
     var add0 = function (x) {
