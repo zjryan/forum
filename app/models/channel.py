@@ -43,3 +43,13 @@ class Channel(db.Model, Model):
         posts = self.posts
         posts.sort(key=lambda p: p.created_time, reverse=reverse)
         return posts
+
+    def black_list(self):
+        self.default_black_list.append('posts')
+        return self.default_black_list
+
+    def update_dict(self):
+        d = dict(
+            link='url_for("controller.channel_view", id={})'.format(self.id)
+        )
+        return d

@@ -22,6 +22,48 @@ var formFromKeys = function (keys, prefix) {
     return form;
 };
 
+var formatTime = function (timestamp) {
+    var time = new Date(timestamp * 1000);
+    var add0 = function (x) {
+        return x < 10 ? '0' + x.toString() : x;
+    };
+    var year = time.getFullYear();
+    var month = time.getMonth() + 1;
+    var day = time.getDate();
+    var hour = time.getHours();
+    var minute = time.getMinutes();
+    var second = time.getSeconds();
+
+    return year + '/' + add0(month) + '/' + add0(day) + ' ' + add0(hour) + ':' + add0(minute) + ':' + add0(second);
+};
+
+var fromNow = function (timestamp) {
+    var now = new Date().getTime() / 1000;
+    var delta_time = now - timestamp;
+    var ret = '{} {}前';
+    if (delta_time < 10) {
+        ret = '刚刚';
+    } else if (delta_time < 60){
+        ret = Math.floor(delta_time).toString() + '秒';
+    } else if (delta_time < 60 * 60) {
+        var minutes = delta_time / 60;
+        ret = Math.floor(minutes).toString() + '分钟';
+    } else if (delta_time < 60 * 60 * 24) {
+        var hours = delta_time / 60 / 60;
+        ret = Math.floor(hours).toString() + '小时';
+    } else if (delta_time < 60 * 60 * 24 * 30) {
+        var days = delta_time / 60 / 60 / 24;
+        ret = Math.floor(days).toString() + '天';
+    } else if (delta_time < 60 * 60 * 24 * 365) {
+        var mouths = delta_time / 60 / 60 / 24 / 30;
+        ret = Math.floor(mouths).toString() + '月';
+    } else {
+        var years = delta_time / 60 / 60 / 24 / 365;
+        ret = Math.floor(years).toString() + '年';
+    }
+    return ret;
+};
+
 var bbs = {
     data: {}
 };
@@ -70,4 +112,9 @@ bbs.register = function(form, success, error) {
 bbs.login = function(form, success, error) {
     var url = '/accounts/login';
     this.post(url, form, success, error);
+};
+
+bbs.postAdd = function (form, success, error) {
+    var url = '/api/post/add';
+    this.post(url, form, success, error)
 };

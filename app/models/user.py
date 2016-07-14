@@ -129,6 +129,25 @@ class User(db.Model, Model):
     def user_by_id(id):
         return User.query.get_or_404(id)
 
+    def black_list(self):
+        new_bl = [
+            'password_hash',
+            'avatar_hash',
+            'role_id',
+            'posts',
+            'comments',
+        ]
+        self.default_black_list += new_bl
+        return self.default_black_list
+
+    def update_dict(self):
+        d = dict(
+            role=Role.role_by_id(self.role_id).permissions,
+            portrait=self.gravatar(size=64),
+            link='url_for("accounts.profile", id={})'.format(self.id)
+        )
+        return d
+
 
 def current_user():
     id = session.get('user_id', None)

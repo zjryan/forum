@@ -2,6 +2,65 @@
 
 {% block title %}{{ channel.name }}{% endblock %}
 
+{% block script %}
+{{ super() }}
+<script src="../static/js/api.js"></script>
+<script>
+    var insertTweet = function (post) {
+        var template = `
+            <div class="post-item">
+                <div class="post-author">
+                    <a href="#">
+                        <img class="media-object round-portrait" src="${ post.author.portrait }">
+                    </a>
+                    <h4 class="media-heading">${ post.author.username }</h4>
+                </div>
+                <div class="post-body">
+                    <div class="post-title">${ post.title }
+                        <div class="post-date">${ formatTime(post.created_time) }</div>
+                    </div>
+                    <div class="post-content">${ post.content }</div>
+                </div>
+            </div>
+        `;
+        $('#id-div-post-list').prepend(template);
+    };
+
+    var addNewPost = function () {
+        var form = {
+            'title': $('#id-text-title').val(),
+            'content': $('#id-text-content').val(),
+            'channel_id': {{ channel.id }},
+        };
+        var success = function (r) {
+            if (r.success) {
+                insertTweet(r.data);
+            } else {
+                log(r.message);
+            }
+        };
+        var error = function (err) {
+            log(err);
+        };
+        bbs.postAdd(form, success, error)
+    };
+
+    var bindActions = function () {
+        $('#id-button-post-add').on('click', function () {
+            addNewPost();
+        });
+    };
+
+    var __main = function () {
+        bindActions();
+    };
+
+    $(document).ready(function () {
+        __main();
+    });
+</script>
+{% endblock %}
+
 {% block page_content %}
  <h1>{{ channel.name }}</h1>
  <hr>
@@ -10,7 +69,7 @@
     <div class="post-form">
         <div class="post-form-item"><input id="id-text-title" class="form-control" placeholder="输入标题"></div>
         <div class="post-form-item"><textarea id="id-text-content" class="form-control" rows="4" placeholder="输入正文"></textarea></div>
-        <div class="post-form-item"><button type="button" class="btn btn-primary">发表</button></div>
+        <div class="post-form-item"><button type="button" id="id-button-post-add" class="btn btn-primary">发表</button></div>
     </div>
 </div>
 <hr>

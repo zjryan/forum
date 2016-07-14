@@ -1,7 +1,13 @@
 from .. import db
+import json
 
 
 class Model(object):
+    default_black_list = [
+        '_sa_instance_state',
+        'default_black_list'
+    ]
+
     def __repr__(self):
         class_name = self.__class__.__name__
         properties = (u'{0} = {1}'.format(k, v) for k, v in self.__dict__.items())
@@ -15,6 +21,21 @@ class Model(object):
         db.session.delete(self)
         db.session.commit()
 
+    def json(self):
+        obj = self.__dict__.copy()
+        d = {k: v for k, v in obj.items() if k not in self.black_list()}
+        new_d = self.update_dict()
+        d.update(new_d)
+        return d
+
+    def black_list(self):
+        return self.default_black_list
+
+    def update_dict(self):
+        return dict()
+
+    def load_model(self):
+        self.default_black_list += []
 
 from .channel import Channel
 from .channel import ChannelPermission
