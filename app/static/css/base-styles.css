@@ -123,7 +123,34 @@ footer {
     padding: 2%;
     margin: 4px 0 4px;
     border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: row;
 }
 .post-list .post-item:hover {
     background-color: #f0f0f0;
+}
+.post-list .post-item .post-author {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+}
+.post-list .post-item .post-author h4 {
+    margin-top: 10px;
+}
+.post-list .post-item .post-title {
+    font-size: 130%;
+    font-weight: bold;
+}
+.post-list .post-item .post-title .post-date{
+    font-size: 80%;
+    font-weight: normal;
+    float: right;
+}
+.post-list .post-item .post-body {
+    flex-grow: 19;
+    padding: 10px;
+}
+img.round-portrait {
+    border-radius: 32px;
 }

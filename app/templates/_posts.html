@@ -1,15 +1,17 @@
 <div class="post-list">
     {% for post in channel.posts_sorted_by_time() %}
     <div class="post-item">
-        <div class="media">
-            <a class="pull-left" href="#">
-                <img class="media-object" src="{{ post.author.gravatar(size=64) }}">
+        <div class="post-author">
+            <a href="#">
+                <img class="media-object round-portrait" src="{{ post.author.gravatar(size=64) }}">
             </a>
-            <div class="media-body">
-                <h4 class="media-heading">{{ post.author.username }}
-                    <small>{{ post.created_time | format_time }}</small></h4>
-                {{ post.title }}
+            <h4 class="media-heading">{{ post.author.username }}</h4>
+        </div>
+        <div class="post-body">
+            <div class="post-title">{{ post.title }}
+                <div class="post-date">{{ post.created_time | format_time }}</div>
             </div>
+            <div class="post-content">{{ post.content }}</div>
         </div>
     </div>
     {% endfor %}
