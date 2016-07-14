@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}{{ channel.name }}{% endblock %}
+
+{% block page_content %}
+ <h1>{{ channel.name }}</h1>
+ <hr>
+<div class="well">
+    <h4>发表帖子:</h4>
+    <div class="post-form">
+        <div class="post-form-item"><input id="id-text-title" class="form-control" placeholder="输入标题"></div>
+        <div class="post-form-item"><textarea id="id-text-content" class="form-control" rows="4" placeholder="输入正文"></textarea></div>
+        <div class="post-form-item"><button type="button" class="btn btn-primary">发表</button></div>
+    </div>
+</div>
+<hr>
+{% include "_posts.html" %}
+{% endblock %}

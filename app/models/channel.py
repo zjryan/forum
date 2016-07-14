@@ -34,3 +34,12 @@ class Channel(db.Model, Model):
 
     def is_admin(self):
         return self.permission == ChannelPermission.ADMIN
+
+    @staticmethod
+    def channel_by_id(id):
+        return Channel.query.get(id)
+
+    def posts_sorted_by_time(self, reverse=True):
+        posts = self.posts
+        posts.sort(key=lambda p: p.created_time, reverse=reverse)
+        return posts

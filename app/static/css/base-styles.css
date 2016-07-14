@@ -99,3 +99,31 @@ ul.channel-list li > a:hover {
 footer {
     margin: 50px 0;
 }
+/*************** post ***************/
+.post-form {
+    display: flex;
+    flex-direction: column;
+}
+.post-form .post-form-item {
+    margin: 5px 0 5px;
+}
+.post-form .post-form-item > textarea {
+    resize: none;
+}
+.post-form .post-form-item > button {
+    align-self: flex-start;
+    width: 120px;
+    font-size: 120%;
+    float: right;
+}
+.post-list {
+    padding: 2%;
+}
+.post-list .post-item {
+    padding: 2%;
+    margin: 4px 0 4px;
+    border-bottom: 1px solid #e0e0e0;
+}
+.post-list .post-item:hover {
+    background-color: #f0f0f0;
+}

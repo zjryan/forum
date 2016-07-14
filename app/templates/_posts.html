@@ -1,0 +1,16 @@
+<div class="post-list">
+    {% for post in channel.posts_sorted_by_time() %}
+    <div class="post-item">
+        <div class="media">
+            <a class="pull-left" href="#">
+                <img class="media-object" src="{{ post.author.gravatar(size=64) }}">
+            </a>
+            <div class="media-body">
+                <h4 class="media-heading">{{ post.author.username }}
+                    <small>{{ post.created_time | format_time }}</small></h4>
+                {{ post.title }}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
