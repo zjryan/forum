@@ -45,7 +45,7 @@ class Post(db.Model, Model):
 
     @staticmethod
     def post_by_id(id):
-        return Post.query.get(id)
+        return Post.query.get_or_404(id)
 
     def black_list(self):
         new_bl = [

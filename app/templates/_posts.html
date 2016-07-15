@@ -12,7 +12,15 @@
             <div class="post-title">{{ post.title }}
                 <div class="post-date">{{ post.created_time | format_time }}</div>
             </div>
-            <div class="post-content">{{ post.content }}</div>
+            <div class="post-content" id="id-post-content-{{ post.id }}">
+                {{ post.content }}
+            </div>
+            <div class="display display-all" data-id="{{ post.id }}">展开全部
+                <div class="fa fa-chevron-down"></div>
+            </div>
+            <div class="display display-brief" data-id="{{ post.id }}">收起
+                <div class="fa fa-chevron-up"></div>
+            </div>
             <div class="post-footer">
                 {% if current_user is not none and current_user.is_admin() %}
                 <div class="post-footer-item"><button class="button-delete btn" data-id="{{ post.id }}">删除</button></div>

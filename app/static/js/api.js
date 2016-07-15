@@ -127,10 +127,15 @@ bbs.login = function(form, success, error) {
 
 bbs.postAdd = function (form, success, error) {
     var url = '/api/post/add';
-    this.post(url, form, success, error)
+    this.post(url, form, success, error);
 };
 
 bbs.postDelete = function (form, success, error) {
     var url = '/api/post/delete';
-    this.post(url, form, success, error)
+    this.post(url, form, success, error);
+};
+
+bbs.getPost = function (form, success, error) {
+    var url = '/api/post';
+    this.post(url, form, success, error);
 };

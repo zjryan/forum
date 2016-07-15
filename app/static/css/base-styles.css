@@ -148,24 +148,27 @@ footer {
     flex-grow: 19;
     padding: 8px;
     margin-left: 10px;
-    display: flex;
-    flex-direction: column;
 }
 .post-list .post-item .post-body .post-title {
     font-size: 130%;
     font-weight: bold;
     margin-bottom: 8px;
-    flex-grow: 1;
 }
 .post-list .post-item .post-body .post-content {
-    flex-grow: 16;
+    font-size: 105%;
+}
+.post-list .post-item .post-body .display {
+    color: rgb(51, 122, 183);
+    font-size: 95%;
+}
+.post-list .post-item .post-body .display:hover {
+    cursor: pointer;
 }
 .post-list .post-item .post-body .post-footer {
-    flex-grow: 1;
     float: right;
     margin-top: 12px;
 }
-.post-list .post-item .post-body .post-footer .post-footer-item{
+.post-list .post-item .post-body .post-footer .post-footer-item {
     float: right;
 }
 img.round-portrait {

@@ -46,5 +46,24 @@ def post_delete():
         r['success'] = True
         r['message'] = '删除成功'
         post.delete()
+    else:
+        abort(401)
     print(r)
     return jsonify(r)
+
+
+@api.route('/post', methods=['POST'])
+def post_full():
+    form = request.get_json()
+    post_id = form.get('post_id')
+    post = Post.post_by_id(post_id)
+    data = post.content
+    r = {
+        'success': True,
+        'message': '获取帖子成功',
+        'data': data,
+    }
+    print(r)
+    return jsonify(r)
+
+

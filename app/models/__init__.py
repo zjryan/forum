@@ -23,7 +23,6 @@ class Model(object):
 
     def json(self):
         self.load_model()
-        print(self.__class__.__name__)
         new_d = self.update_dict()
         d = {k: v for k, v in self.__dict__.items() if k not in self.black_list()}
         d.update(new_d)
