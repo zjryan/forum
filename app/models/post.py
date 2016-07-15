@@ -60,6 +60,6 @@ class Post(db.Model, Model):
         d = dict(
             author=User.user_by_id(self.user_id).json(),
             channel=Channel.channel_by_id(self.channel_id).json(),
-            link='url_for("controller.post_view", id={})'.format(self.id)
+            link='/post/{}'.format(self.id)
         )
         return d

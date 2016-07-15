@@ -23,11 +23,36 @@ var deleteCurrentPost = function (postId) {
     bbs.postDelete(form, success, error);
 };
 
+var deleteCurrentPostAndGoBack = function (postId) {
+    var form = {
+        'post_id': postId,
+    };
+    var success = function (r) {
+        if (r.success) {
+            deletePost(postId);
+            window.location.href = r.next
+        } else {
+            alertMessage(r.message);
+        }
+    };
+    var error = function (err) {
+        log(err);
+    };
+    bbs.postDelete(form, success, error);
+};
+
 var bindPostDelete = function () {
     $('.button-delete').on('click', function () {
         var postId = this.dataset.id;
         dismissAlert();
         deleteCurrentPost(postId);
+    });
+};
+
+var bindPostDeleteRedirectBack = function () {
+    $('.button-delete').on('click', function () {
+        var postId = this.dataset.id;
+        deleteCurrentPostAndGoBack(postId);
     });
 };
 

@@ -31,17 +31,17 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if current_user is not none %}
-                        <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            {{ current_user.username }}<b class="caret"></b>
-                        </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#"><div class="fa fa-user"></div>用户资料</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="/accounts/logout"><div class="fa fa-power-off"></div> 登出用户</a></li>
-                            </ul>
-                        </li>
+                    <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        {{ current_user.username }}<b class="caret"></b>
+                    </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#"><div class="fa fa-user"></div>用户资料</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="/accounts/logout"><div class="fa fa-power-off"></div> 登出用户</a></li>
+                        </ul>
+                    </li>
                     {% else %}
-                        <li><a href="/accounts">用户登录</a></li>
+                    <li><a href="/accounts">用户登录</a></li>
                     {% endif %}
                 </ul>
             </div>

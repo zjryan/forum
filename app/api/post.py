@@ -1,6 +1,7 @@
 from flask import request
 from flask import jsonify
 from flask import abort
+from flask import url_for
 
 from ..models import User
 from ..models import current_user
@@ -46,6 +47,7 @@ def post_delete():
     if user is not None or post.author is user or user.is_admin():
         r['success'] = True
         r['message'] = '删除成功'
+        r['next'] = url_for('index')
         post.delete()
     else:
         abort(401)
@@ -66,4 +68,3 @@ def post_full():
     }
     print(r)
     return jsonify(r)
-

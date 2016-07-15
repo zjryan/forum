@@ -148,7 +148,7 @@ class User(db.Model, Model):
         d = dict(
             role=Role.role_by_id(self.role_id).permissions,
             portrait=self.gravatar(size=64),
-            link='url_for("accounts.profile", id={})'.format(self.id)
+            link='/accounts/profile/{}'.format(self.id)
         )
         return d
 

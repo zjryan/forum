@@ -50,6 +50,6 @@ class Channel(db.Model, Model):
 
     def update_dict(self):
         d = dict(
-            link='url_for("controller.channel_view", id={})'.format(self.id)
+            link='/channel/{}'.format(self.id)
         )
         return d

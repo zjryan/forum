@@ -4,7 +4,6 @@ from . import Model
 from . import db
 
 import time
-import json
 
 
 class Comment(db.Model, Model):

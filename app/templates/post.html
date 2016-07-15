@@ -4,6 +4,20 @@
 
 {% block script %}
 {{ super() }}
+<script src="../static/js/post.js"></script>
+<script>
+    var bindActions = function () {
+        bindPostDeleteRedirectBack();
+    };
+
+    var __main = function () {
+        bindActions();
+    };
+
+    $(document).ready(function () {
+        __main();
+    });
+</script>
 {% endblock %}
 
 {% block page_content %}
@@ -25,6 +39,11 @@
     <hr>
     <div class="main-post-content">
         {{ post.content }}
+    </div>
+    <div class="main-post-footer">
+        {% if current_user is not none and (current_user.is_admin() or current_user.id == post.author.id) %}
+        <button class="button-delete btn" data-id="{{ post.id }}">删除</button>
+        {% endif %}
     </div>
     <hr>
     <div class="main-post-note">

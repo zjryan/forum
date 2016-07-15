@@ -213,6 +213,11 @@ button.button-delete:active {
 .main-post .main-post-note {
     font-size: 140%;
 }
+.main-post .main-post-footer {
+    margin-top: 15px;
+    text-align: right;
+    padding-right: 2%;
+}
 .comment-form {
     display: flex;
     flex-direction: column;
