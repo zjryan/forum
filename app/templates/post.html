@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block script %}
+{{ super() }}
+{% endblock %}
+
+{% block page_content %}
+<div class="main-post">
+    <div class="row">
+        <div class="col-md-9">
+            <h1>{{ post.title }}</h1>
+            <div class="main-post-author">
+            by <a href="#">{{ post.author.username }}</a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="main-post-portrait"><img class="round-portrait-100" src="{{ post.author.gravatar(size=100) }}"></div>
+        </div>
+    </div>
+
+    <hr>
+    <div class="main-post-date"><div class="fa fa-clock-o"></div>{{ post.created_time | format_time }}</div>
+    <hr>
+    <div class="main-post-content">
+        {{ post.content }}
+    </div>
+    <hr>
+    <div class="main-post-note">
+        共有 {{ post.comments | length }} 条评论
+    </div>
+    <hr>
+</div>
+<div class="well">
+    <h4>发表评论:</h4>
+    <div class="comment-form">
+        <div class="comment-form-item"><textarea id="id-text-content" class="form-control" rows="3" placeholder="输入评论"></textarea></div>
+        <div class="comment-form-item"><button type="button" id="id-button-comment-add" class="btn btn-primary">发表</button></div>
+    </div>
+</div>
+{% endblock %}

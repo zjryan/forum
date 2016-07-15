@@ -154,6 +154,10 @@ footer {
     font-weight: bold;
     margin-bottom: 8px;
 }
+.post-list .post-item .post-body .post-title a {
+    text-decoration: none;
+    color: black;
+}
 .post-list .post-item .post-body .post-content {
     font-size: 105%;
 }
@@ -171,8 +175,11 @@ footer {
 .post-list .post-item .post-body .post-footer .post-footer-item {
     float: right;
 }
-img.round-portrait {
+img.round-portrait-64 {
     border-radius: 32px;
+}
+img.round-portrait-100 {
+    border-radius: 50px;
 }
 button.button-delete {
     border-radius: 5px;
@@ -185,4 +192,40 @@ button.button-delete:hover {
 }
 button.button-delete:active {
     color: white;
+}
+/*************** main post ***************/
+.main-post {
+    padding: 1%;
+}
+.main-post .main-post-author {
+    margin-top: 20px;
+    font-size: 140%;
+}
+.main-post .main-post-content {
+    font-size: 115%;
+    padding: 0 1.5% 0 1.5%;
+}
+.main-post .main-post-portrait {
+    margin: 5% 0 0 5%;
+    text-align: right;
+    padding-right: 5%;
+}
+.main-post .main-post-note {
+    font-size: 140%;
+}
+.comment-form {
+    display: flex;
+    flex-direction: column;
+}
+.comment-form .comment-form-item {
+    margin: 5px 0 5px;
+}
+.comment-form .comment-form-item > textarea {
+    resize: none;
+}
+.comment-form .comment-form-item > button {
+    align-self: flex-start;
+    width: 120px;
+    font-size: 120%;
+    float: right;
 }

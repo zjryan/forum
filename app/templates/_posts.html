@@ -4,12 +4,12 @@
     <div class="post-item" id="id-post-item-{{ post.id }}">
         <div class="post-author">
             <a href="#">
-                <img class="media-object round-portrait" src="{{ post.author.gravatar(size=64) }}">
+                <img class="media-object round-portrait-64" src="{{ post.author.gravatar(size=64) }}">
             </a>
             <h4 class="media-heading">{{ post.author.username }}</h4>
         </div>
         <div class="post-body">
-            <div class="post-title">{{ post.title }}
+            <div class="post-title"><a href="{{ url_for('controllers.post_view', id=post.id) }}">{{ post.title }}</a>
                 <div class="post-date">{{ post.created_time | format_time }}</div>
             </div>
             <div class="post-content" id="id-post-content-{{ post.id }}">

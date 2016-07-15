@@ -37,7 +37,7 @@ class Channel(db.Model, Model):
 
     @staticmethod
     def channel_by_id(id):
-        return Channel.query.get(id)
+        return Channel.query.get_or_404(id)
 
     @staticmethod
     def posts_sorted_by_time(posts, reverse=True):

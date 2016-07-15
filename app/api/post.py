@@ -4,6 +4,7 @@ from flask import abort
 
 from ..models import User
 from ..models import current_user
+from ..models import Channel
 from ..models import Post
 from . import api
 
@@ -65,5 +66,4 @@ def post_full():
     }
     print(r)
     return jsonify(r)
-
 
