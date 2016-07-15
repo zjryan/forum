@@ -138,19 +138,48 @@ footer {
 .post-list .post-item .post-author h4 {
     margin-top: 10px;
 }
-.post-list .post-item .post-title {
-    font-size: 130%;
-    font-weight: bold;
-}
 .post-list .post-item .post-title .post-date{
     font-size: 80%;
     font-weight: normal;
     float: right;
+    color: #a0a0a0;
 }
 .post-list .post-item .post-body {
     flex-grow: 19;
-    padding: 10px;
+    padding: 8px;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.post-list .post-item .post-body .post-title {
+    font-size: 130%;
+    font-weight: bold;
+    margin-bottom: 8px;
+    flex-grow: 1;
+}
+.post-list .post-item .post-body .post-content {
+    flex-grow: 16;
+}
+.post-list .post-item .post-body .post-footer {
+    flex-grow: 1;
+    float: right;
+    margin-top: 12px;
+}
+.post-list .post-item .post-body .post-footer .post-footer-item{
+    float: right;
 }
 img.round-portrait {
     border-radius: 32px;
+}
+button.button-delete {
+    border-radius: 5px;
+    background-color: #d9534f;
+    color: white;
+    font-size: 80%;
+}
+button.button-delete:hover {
+    color: white;
+}
+button.button-delete:active {
+    color: white;
 }

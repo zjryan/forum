@@ -129,3 +129,8 @@ bbs.postAdd = function (form, success, error) {
     var url = '/api/post/add';
     this.post(url, form, success, error)
 };
+
+bbs.postDelete = function (form, success, error) {
+    var url = '/api/post/delete';
+    this.post(url, form, success, error)
+};

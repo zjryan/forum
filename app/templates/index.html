@@ -2,6 +2,24 @@
 
 {% block title %}主页{% endblock %}
 
+{% block script %}
+{{ super() }}
+<script src="../static/js/post.js"></script>
+<script>
+    var bindActions = function () {
+        bindPostDelete();
+    };
+
+    var __main = function () {
+        bindActions();
+    };
+
+    $(document).ready(function () {
+        __main();
+    });
+</script>
+{% endblock %}
+
 {% block page_content %}
 <h1>最新帖子</h1>
 <hr>

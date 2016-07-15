@@ -22,9 +22,10 @@ class Model(object):
         db.session.commit()
 
     def json(self):
-        obj = self.__dict__.copy()
-        d = {k: v for k, v in obj.items() if k not in self.black_list()}
+        self.load_model()
+        print(self.__class__.__name__)
         new_d = self.update_dict()
+        d = {k: v for k, v in self.__dict__.items() if k not in self.black_list()}
         d.update(new_d)
         return d
 
