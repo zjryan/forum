@@ -1,0 +1,236 @@
+.header .navbar {
+    font-size: 120%;
+}
+.fa {
+    margin-right: 10px;
+}
+/*************** login ***************/
+.form-flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.form-flex {
+    margin-top: 100px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-width: 400px;
+    min-height: 500px;
+    border-radius: 12px;
+    border: solid 2px #f0f0f0;
+    padding: 5%;
+}
+.form-flex .form-flex-item {
+    margin: 5px 0 5px 0;
+    font-size: 125%;
+}
+.form-flex .form-flex-item .title {
+    font-size: 220%;
+    font-weight: bolder;
+}
+.form-flex .form-flex-item .description {
+    margin-bottom: 45px;
+    font-size: 130%;
+}
+.form-flex .form-flex-item .block {
+    margin-bottom: 15px;
+}
+.form-flex-item .form-flex-tab {
+    display: flex;
+    flex-direction: row;
+}
+.form-flex-item .form-flex-tab a {
+    text-decoration: none;
+    color: #000;
+}
+.form-flex-item .form-flex-tab .active {
+    color: rgb(51, 122, 183);
+}
+.form-flex-tab .a:hover {
+    text-decoration: none;
+}
+.form-flex-tab .block {
+    margin-left: 20px;
+}
+.form-flex-item .tab-block {
+    height: 3px;
+    width: 45px;
+    position: relative;
+    left: 100px;
+    background-color: rgb(51, 122, 183);
+}
+.form-flex-item .btn {
+    margin-top: 10px;
+    background-color: rgb(51, 122, 183);
+    color: white;
+    width: 70%;
+}
+.form-flex-item .btn:hover {
+    background-color: rgb(40, 96, 144);
+    color: white;
+}
+.form-flex-item .alert {
+    text-align: center;
+    font-size: 80%;
+    min-width: 280px;
+}
+
+/*************** channel list ***************/
+.channel-title {
+    font-size: 130%;
+    padding: 10px 0 10px;
+}
+ul.channel-list li {
+    font-size: 120%;
+    list-style-type: none;
+    margin: 3px 0 3px;
+}
+ul.channel-list li > a {
+    text-decoration: none;
+    color: rgb(40, 96, 144);
+}
+ul.channel-list li > a:hover {
+    color: rgb(51, 122, 183);
+}
+/*************** footer ***************/
+footer {
+    margin: 50px 0;
+}
+/*************** post ***************/
+.post-form {
+    display: flex;
+    flex-direction: column;
+}
+.post-form .post-form-item {
+    margin: 5px 0 5px;
+}
+.post-form .post-form-item > textarea {
+    resize: none;
+}
+.post-form .post-form-item > button {
+    align-self: flex-start;
+    width: 120px;
+    font-size: 120%;
+    float: right;
+}
+.post-list {
+    padding: 2%;
+}
+.post-list .post-item {
+    padding: 2%;
+    margin: 4px 0 4px;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: row;
+}
+.post-list .post-item:hover {
+    background-color: #f0f0f0;
+}
+.post-list .post-item .post-author {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+}
+.post-list .post-item .post-author h4 {
+    margin-top: 10px;
+}
+.post-list .post-item .post-title .post-date{
+    font-size: 80%;
+    font-weight: normal;
+    float: right;
+    color: #a0a0a0;
+}
+.post-list .post-item .post-body {
+    flex-grow: 19;
+    padding: 8px;
+    margin-left: 10px;
+}
+.post-list .post-item .post-body .post-title {
+    font-size: 130%;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+.post-list .post-item .post-body .post-title a {
+    text-decoration: none;
+    color: black;
+}
+.post-list .post-item .post-body .post-content {
+    font-size: 105%;
+}
+.post-list .post-item .post-body .display {
+    color: rgb(51, 122, 183);
+    font-size: 95%;
+}
+.post-list .post-item .post-body .display:hover {
+    cursor: pointer;
+}
+.post-list .post-item .post-body .post-footer {
+    float: right;
+    margin-top: 12px;
+}
+.post-list .post-item .post-body .post-footer .post-footer-item {
+    float: right;
+}
+img.round-portrait-64 {
+    border-radius: 32px;
+}
+img.round-portrait-100 {
+    border-radius: 50px;
+}
+button.button-delete {
+    border-radius: 5px;
+    background-color: #d9534f;
+    color: white;
+    font-size: 80%;
+}
+button.button-delete:hover {
+    color: white;
+}
+button.button-delete:active {
+    color: white;
+}
+/*************** main post ***************/
+.main-post {
+    padding: 1%;
+}
+.main-post .main-post-author {
+    margin-top: 20px;
+    font-size: 140%;
+}
+.main-post .main-post-content {
+    font-size: 115%;
+    padding: 0 1.5% 0 1.5%;
+}
+.main-post .main-post-portrait {
+    margin: 5% 0 0 5%;
+    text-align: right;
+    padding-right: 5%;
+}
+.main-post .main-post-note {
+    font-size: 140%;
+}
+.main-post .main-post-footer {
+    margin-top: 15px;
+    text-align: right;
+    padding-right: 2%;
+}
+.comment-form {
+    display: flex;
+    flex-direction: column;
+}
+.comment-form .comment-form-item {
+    margin: 5px 0 5px;
+}
+.comment-form .comment-form-item > textarea {
+    resize: none;
+}
+.comment-form .comment-form-item > button {
+    align-self: flex-start;
+    width: 120px;
+    font-size: 120%;
+    float: right;
+}

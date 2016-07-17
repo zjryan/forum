@@ -1,7 +1,7 @@
 # encoding: utf-8
 
-from .model import Model
-from .model import db
+from . import Model
+from . import db
 
 import time
 
@@ -29,10 +29,19 @@ class Comment(db.Model, Model):
     def set_post(self, post_id):
         self.post_id = post_id
 
-    def display_item(self):
-        name = 'comment'
-        if self.content.__len__() > 30:
-            content = self.content[:30] + '...'
-        else:
-            content = self.content
-        return (name, content)
+    def black_list(self):
+        new_bl = [
+            'user_id',
+            'post_id',
+        ]
+        self.default_black_list += new_bl
+        return self.default_black_list
+
+    def update_dict(self):
+        from . import User
+        from . import Post
+        d = dict(
+            author=User.user_by_id(self.user_id).json(),
+            post=Post.post_by_id(self.post_id).json()
+        )
+        return d

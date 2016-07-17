@@ -14,7 +14,7 @@ def format_time(timestamp):
 
 
 @app.template_filter('from_now')
-def format_time(timestamp):
+def from_now(timestamp):
     now = time.time()
     delta_time = now - timestamp
     ret = '{} {}前'

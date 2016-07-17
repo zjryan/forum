@@ -12,7 +12,7 @@ def log(*args):
 def is_legal(s):
     for c in s:
         if c not in string.ascii_letters and \
-            c not in string.digits:
+        c not in string.digits:
             return False
     return True
 

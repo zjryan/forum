@@ -1,7 +1,7 @@
 # encoding: utf-8
 
-from .model import Model
-from .model import db
+from . import Model
+from . import db
 
 
 class Permission:
@@ -41,4 +41,6 @@ class Role(db.Model, Model):
             role.default = roles[r][1]
             role.save()
 
-
+    @staticmethod
+    def role_by_id(id):
+        return Role.query.get(id)

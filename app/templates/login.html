@@ -1,38 +1,167 @@
-{% extends 'base12.html' %}
+{% extends "base.html" %}
 
 {% block title %}用户登录{% endblock %}
 
-{% block header %}
-    <div class="hero-content text-center">
-        <section class="sign-up section-padding text-center form-bg" id="download">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 col-md-offset-3">
-                        {% include "_flashed_msg.html" %}
-                        <h2>用户登录</h2>
-                        <h3>与世界分享你的装逼经验</h3>
-                        <form class="signup-form" action="/login" method="POST" role="form">
-                            <div class="form-input-group">
-                                <i class="fa fa-user"></i>
-                                <input type="text" name="username" placeholder="输入用户名" required>
-                            </div>
-                            <div class="form-input-group">
-                                <i class="fa fa-lock"></i>
-                                <input type="password" name="password" placeholder="输入密码" required>
-                            </div>
-                            <button type="submit" class="btn-fill sign-up-btn">点击登录</button>
-                        </form>
-                        <div class="sign-up-note">没有账号？<a href="/register">点击注册</a></div>
-                    </div>
-                </div>
+{% block script %}
+{{ super() }}
+<script src="../static/js/api.js"></script>
+<script>
+    var setup = function () {
+        //tab click
+        $('.form-flex-tab > a').on('click', function () {
+            var self = $(this);
+            $('.active').removeClass('active');
+            self.addClass('active');
+        });
+
+        //tab action
+        var tabAction = function (position, showLogin) {
+            $('.tab-block').animate({
+                "left": position
+            }, "fast");
+            $('#id-div-login').toggle(showLogin);
+            $('#id-div-signup').toggle(!showLogin);
+        };
+
+        $('#id-a-login').on('click', function () {
+            var position = '50px';
+            var showLogin = true;
+            tabAction(position, showLogin);
+        });
+        $('#id-a-signup').on('click', function (){
+            var position = '-5px';
+            var showLogin = false;
+            tabAction(position, showLogin);
+        });
+    };
+
+    var loginForm = function () {
+        var keys = [
+            'username',
+            'password',
+        ];
+        var loginPrefix = 'id-input-login-';
+        var form = formFromKeys(keys, loginPrefix);
+        return form;
+    };
+
+    var registerForm = function () {
+        var keys = [
+            'username',
+            'password',
+            'password2',
+            'email',
+        ];
+        var registerPrefix = 'id-input-';
+        var form = formFromKeys(keys, registerPrefix);
+        return form;
+    };
+
+    // actions
+    var register = function () {
+        var form = registerForm();
+        var success = function (r) {
+            log('reg, ', r);
+            if (r.success) {
+                log(r.next);
+                window.location.href = r.next;
+            } else {
+                alertMessage(r.message)
+            }
+        };
+        var error = function (err) {
+            log('reg, ', err);
+        };
+        bbs.register(form, success, error);
+    };
+
+    var login = function () {
+        var form = loginForm();
+        var success = function (r) {
+            log('login, ', r);
+            if (r.success) {
+                log(r.next);
+                window.location.href = r.next;
+            } else {
+                alertMessage(r.message)
+            }
+        };
+        var error = function (err) {
+            log('login, ', err);
+            alert(err);
+        };
+        bbs.login(form, success, error);
+    };
+
+    var bindActions = function() {
+        $('#id-button-register').on('click', function () {
+            dismissAlert();
+            register();
+        });
+
+        $('#id-button-login').on('click', function () {
+            dismissAlert();
+            login();
+        });
+    };
+
+    var __main = function () {
+        setup();
+        bindActions();
+        $('#id-a-login').click();
+    };
+
+    $(document).ready(function () {
+        __main();
+    });
+</script>
+{% endblock %}
+
+{% block content_body %}
+<div class="form-flex-container">
+    <div class="form-flex">
+        <div class="form-flex-item"><div class="title">COCODE 论坛</div></div>
+        <div class="form-flex-item"><div class="description">与世界分享你的装逼经验</div></div>
+        <div class="form-flex-item" id="id-div-alert"></div>
+        <div class="form-flex-item">
+            <div class="form-flex-tab">
+                <a id="id-a-signup" href="#register">注册</a>
+                <div class="block"></div>
+                <a id="id-a-login" href="#login">登录</a>
             </div>
-        </section>
+            <div class="tab-block"></div>
+        </div>
+        <div id="id-div-signup">
+            <div class="form-flex-item">
+                <input class="form-control" id="id-input-username" type="text" placeholder="用户名（不少于 3 位）" required/>
+            </div>
+            <div class="form-flex-item">
+                <input class="form-control" id="id-input-password" type="password" placeholder="密码（不少于 3 位）" required/>
+            </div>
+            <div class="form-flex-item">
+                <input class="form-control" id="id-input-password2" type="password" placeholder="确认密码" required/>
+            </div>
+            <div class="form-flex-item">
+                <input class="form-control" id="id-input-email" type="email" placeholder="电子邮箱" required/>
+            </div>
+            <div class="form-flex-item">
+                <button id="id-button-register" class="btn btn-default btn-lg">注册</button>
+            </div>
+        </div>
+        <div id="id-div-login">
+            <div class="form-flex-item">
+                <input class="form-control" id="id-input-login-username" type="text" placeholder="用户名" required/>
+            </div>
+            <div class="form-flex-item">
+                <input class="form-control" id="id-input-login-password" type="password" placeholder="密码" required/>
+            </div>
+            <div class="form-flex-item">
+                <button id="id-button-login" class="btn btn-default btn-lg">登录</button>
+            </div>
+        </div>
     </div>
+</div>
 {% endblock %}
 
-{% block content %}
+{% block footer %}
 {% endblock %}
-
-{% block to_top %}
-{% endblock %}
-

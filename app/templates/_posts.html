@@ -1,41 +1,32 @@
-<div class="items-container">
-    {% for post in posts %}
-        <div class="item-container col-md-12">
-            {% set post_author = post.author %}
-            {% set post_channel = post.channel.name %}
-            {% set item = post.display_item() %}
-            {% set post_title = item[1] %}
-            {% set post_content = item[2] %}
-            <div class="col-md-2 item-left">
-                <div class="item-portrait">
-                    <img class="img-rounded center-block round" src="{{ post_author.gravatar(size=60) }}" />
-                </div>
-                <div class="item-author">
-                    <a href="/profile/{{ post_author.username }}">{{ post_author.username }}</a>
-                </div>
+<div class="post-list" id="id-div-post-list">
+    <div id="id-div-alert"></div>
+    {% for post in Channel.posts_sorted_by_time(posts) %}
+    <div class="post-item" id="id-post-item-{{ post.id }}">
+        <div class="post-author">
+            <a href="#">
+                <img class="media-object round-portrait-64" src="{{ post.author.gravatar(size=64) }}">
+            </a>
+            <h4 class="media-heading">{{ post.author.username }}</h4>
+        </div>
+        <div class="post-body">
+            <div class="post-title"><a href="{{ url_for('controllers.post_view', id=post.id) }}">{{ post.title }}</a>
+                <div class="post-date">{{ post.created_time | format_time }}</div>
             </div>
-            <div class="col-md-10 item-right">
-                <div class="item-header">
-                    <div class="col-md-9">
-                        {{ post_author.username }} 在 {{ post_channel }} 内发表了
-                    </div>
-                    <div class="col-md-3 item-date">
-                        {{ post.created_time | from_now }}
-                    </div>
-                </div>
-                <div class="item-body"></div>
-                    <div class="item-title">
-                        <a href="/post/{{ post.id }}">{{ post_title }}</a>
-                    </div>
-                    <div class="item-content">
-                        {{ post_content }}
-                    </div>
-                <div class="item-footer">
-                    作者: {{ post_author.username }} |
-                    {{ post.comments | length }} 条评论 |
-                    发表时间: {{ post.created_time | format_time }}
-                </div>
+            <div class="post-content" id="id-post-content-{{ post.id }}">
+                {{ post.content }}
+            </div>
+            <div class="display display-all" data-id="{{ post.id }}">展开全部
+                <div class="fa fa-chevron-down"></div>
+            </div>
+            <div class="display display-brief" data-id="{{ post.id }}">收起
+                <div class="fa fa-chevron-up"></div>
+            </div>
+            <div class="post-footer">
+                {% if current_user is not none and current_user.is_admin() %}
+                <div class="post-footer-item"><button class="button-delete btn" data-id="{{ post.id }}">删除</button></div>
+                {% endif %}
             </div>
         </div>
+    </div>
     {% endfor %}
 </div>

@@ -11,21 +11,27 @@ from app.models.comment import Comment
 
 @app.context_processor
 def current_user_processor():
-    return dict(current_user=current_user())
+    user = current_user()
+    return dict(current_user=user)
 
 
 @app.context_processor
 def channel_processor():
     channels = Channel.query.all()
-    permissions = [
-        ChannelPermission.NORMAL,
-        ChannelPermission.ADMIN,
-    ]
+    permissions = {
+        'NORMAL': ChannelPermission.NORMAL,
+        'ADMIN': ChannelPermission.ADMIN,
+    }
     dic = {
         'channels': channels,
-        'permissions': permissions,
+        'channel_permissions': permissions,
     }
     return dict(**dic)
+
+
+@app.context_processor
+def class_processor():
+    return dict(Channel=Channel)
 
 
 @app.context_processor
