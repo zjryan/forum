@@ -28,7 +28,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="/"><div class="fa fa-home"></div> 主页</a></li>
-                    <li><a href="#" id="id-a-resume"><div class="fa fa-file-text-o"></div> 我的简历</a></li>
+                    <li><a href="#" class="a-resume"><div class="fa fa-file-text-o"></div> 我的简历</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if current_user is not none %}
@@ -102,7 +102,7 @@
     <footer>
     <div class="row">
         <div class="col-lg-12">
-            <p>Copyright &copy; Cocode BBS by Ryan 2016</p>
+            <p>Copyright &copy; Cocode BBS by Ryan 2016 | <a href="#" class="a-resume">我的简历</a> </p>
         </div>
     </div>
     </footer>
@@ -117,12 +117,11 @@
 <script>
     "use strict";
     var getResume = function () {
-        console.log('fuck');
         window.open('../static/cv/zjr_online.pdf');
     };
 
     var bindGetResume = function () {
-        $('#id-a-resume').on('click', function () {
+        $('.a-resume').on('click', function () {
             getResume();
         });
     };

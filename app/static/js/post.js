@@ -42,7 +42,7 @@ var deleteCurrentPostAndGoBack = function (postId) {
 };
 
 var bindPostDelete = function () {
-    $('.button-delete').on('click', function () {
+    $('.post-list').on('click', '.button-delete', function () {
         var postId = this.dataset.id;
         dismissAlert();
         deleteCurrentPost(postId);
@@ -117,7 +117,7 @@ var displaySetUpFirst = function () {
 };
 
 var bindDisplayAll = function () {
-    $('.display-all').on('click', function () {
+    $('.post-list').on('click', '.display-all', function () {
         var postId = this.dataset.id;
         var self = $(this);
         dismissAlert();
@@ -128,7 +128,7 @@ var bindDisplayAll = function () {
 };
 
 var bindDisplayBrief = function () {
-    $('.display-brief').on('click', function () {
+    $('.post-list').on('click', '.display-brief', function () {
         var self = $(this);
         var postId = this.dataset.id;
         self.hide();
