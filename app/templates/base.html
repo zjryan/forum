@@ -28,6 +28,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="/"><div class="fa fa-home"></div> 主页</a></li>
+                    <li><a href="#" id="id-a-resume"><div class="fa fa-file-text-o"></div> 我的简历</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if current_user is not none %}
@@ -35,7 +36,7 @@
                         {{ current_user.username }}<b class="caret"></b>
                     </a>
                         <ul class="dropdown-menu">
-                            <li><a href="#"><div class="fa fa-user"></div>用户资料</a></li>
+                            <li><a href="#"><div class="fa fa-user"></div> 用户资料</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="/accounts/logout"><div class="fa fa-power-off"></div> 登出用户</a></li>
                         </ul>
@@ -113,5 +114,26 @@
 <script src="../static/js/jquery-3.0.0.min.js"></script>
 <script src="../static/js/bootstrap.js"></script>
 <script src="../static/js/api.js"></script>
+<script>
+    "use strict";
+    var getResume = function () {
+        console.log('fuck');
+        window.open('../static/cv/zjr_online.pdf');
+    };
+
+    var bindGetResume = function () {
+        $('#id-a-resume').on('click', function () {
+            getResume();
+        });
+    };
+
+    var __baseMain = function () {
+        bindGetResume();
+    };
+
+    $(document).ready(function () {
+        __baseMain();
+    });
+</script>
 {% endblock %}
 </html>
