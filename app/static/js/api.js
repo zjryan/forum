@@ -139,3 +139,8 @@ bbs.getPost = function (form, success, error) {
     var url = '/api/post';
     this.post(url, form, success, error);
 };
+
+bbs.commentAdd = function (form, success, error) {
+    var url = '/api/comment/add';
+    this.post(url, form, success, error);
+};

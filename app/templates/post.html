@@ -6,8 +6,64 @@
 {{ super() }}
 <script src="../static/js/post.js"></script>
 <script>
+    var insertComment = function (comment) {
+        var template = `
+            <div class="comment-item">
+                <div class="comment-author col-md-2">
+                    <a href="#">
+                        <img class="media-object round-portrait-64" src="${ comment.author.portrait }">
+                    </a>
+                    <h4 class="media-heading">${ comment.author.username }</h4>
+                </div>
+                <div class="comment-body col-md-10">
+                    <div class="comment-date">${ formatTime(comment.created_time) }</div>
+                    <div class="comment-content" id="id-comment-content-${ comment.id }">
+                        ${ comment.content }
+                    </div>
+                    <div class="comment-footer">
+                        <!--{% if current_user is not none and (current_user.is_admin() or current_user.username == comment.author.username)  %}-->
+                        <!--<div class="comment-footer-item"><button class="button-delete btn" data-id="{{ post.id }}">删除</button></div>-->
+                        <!--{% endif %}-->
+                    </div>
+                </div>
+            </div>
+        `;
+        $('.comment-list').prepend(template);
+    };
+
+    var clearPostForm = function () {
+        $('#id-text-content').val('');
+    };
+
+    var addNewComment = function () {
+        var form = {
+            'content': $('#id-text-content').val(),
+            'post_id': {{ post.id }}
+        };
+        var success = function (r) {
+            if (r.success) {
+                insertComment(r.data);
+                clearPostForm();
+            } else {
+                alertMessage(r.message);
+            }
+        };
+        var error = function (err) {
+            log(err);
+        };
+        bbs.commentAdd(form, success, error)
+    };
+
+    var bindCommentAdd = function () {
+        $('#id-button-comment-add').on('click', function () {
+            dismissAlert();
+            addNewComment();
+        });
+    };
+
     var bindActions = function () {
         bindPostDeleteRedirectBack();
+        bindCommentAdd();
     };
 
     var __main = function () {
