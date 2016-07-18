@@ -4,6 +4,10 @@
 .fa {
     margin-right: 10px;
 }
+.side-content {
+    position: fixed;
+    width: 20%;
+}
 /*************** login ***************/
 .form-flex-container {
     display: flex;
