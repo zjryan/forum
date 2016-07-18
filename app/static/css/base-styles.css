@@ -236,3 +236,61 @@ button.button-delete:active {
     font-size: 120%;
     float: right;
 }
+/*************** comment ***************/
+.comment-list {
+    padding: 2%;
+}
+.comment-list .comment-item {
+    padding: 2%;
+    margin: 4px 0 4px;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: row;
+}
+.comment-list .comment-item:hover {
+    background-color: #f0f0f0;
+}
+.comment-list .comment-item .comment-author {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.comment-list .comment-item .comment-author h4 {
+    margin-top: 10px;
+}
+.comment-list .comment-item .comment-title .comment-date{
+    font-size: 80%;
+    font-weight: normal;
+    float: right;
+    color: #a0a0a0;
+}
+.comment-list .comment-item .comment-body {
+    padding: 8px;
+    margin-left: 10px;
+}
+.comment-list .comment-item .comment-body .comment-title {
+    font-size: 130%;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+.comment-list .comment-item .comment-body .comment-title a {
+    text-decoration: none;
+    color: black;
+}
+.comment-list .comment-item .comment-body .comment-content {
+    font-size: 105%;
+}
+.comment-list .comment-item .comment-body .display {
+    color: rgb(51, 122, 183);
+    font-size: 95%;
+}
+.comment-list .comment-item .comment-body .display:hover {
+    cursor: pointer;
+}
+.comment-list .comment-item .comment-body .comment-footer {
+    float: right;
+    margin-top: 12px;
+}
+.comment-list .comment-item .comment-body .comment-footer .comment-footer-item {
+    float: right;
+}

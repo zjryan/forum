@@ -63,3 +63,8 @@ class Post(db.Model, Model):
             link='/post/{}'.format(self.id)
         )
         return d
+
+    @staticmethod
+    def comments_sorted_by_time(comments, reverse=True):
+        comments.sort(key=lambda p: p.created_time, reverse=reverse)
+        return comments
