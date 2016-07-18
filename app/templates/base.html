@@ -11,6 +11,7 @@
 {% endblock %}
 <body>
 {% block navbar %}
+<a name="top"></a>
 <div class="header">
     <div class="navbar navbar-inverse" role="navigation">
         <div class="container">
@@ -98,13 +99,23 @@
 </div>
 {% endblock %}
 
+{% block to_top %}
+<div class="container">
+    <a href="#top">
+        <div class="back-to-top">
+        <div class="fa fa-arrow-up"></div>
+        </div>
+    </a>
+</div>
+{% endblock %}
+
 {% block footer %}
 <hr>
 <div class="container">
     <footer>
     <div class="row">
         <div class="col-lg-12">
-            <p>Copyright &copy; Cocode BBS by Ryan 2016 | <a href="#" class="a-resume">我的简历</a> </p>
+            <p>Copyright &copy; Cocode BBS by Ryan 2016 | <a href="#" class="a-resume">我的简历</a></p>
         </div>
     </div>
     </footer>

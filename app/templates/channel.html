@@ -9,13 +9,13 @@
     var insertPost = function (post) {
         var template = `
             <div class="post-item" id="id-post-item-${ post.id }">
-                <div class="post-author">
+                <div class="post-author col-md-2">
                     <a href="#">
                         <img class="media-object round-portrait-64" src="${ post.author.portrait }">
                     </a>
                     <h4 class="media-heading">${ post.author.username }</h4>
                 </div>
-                <div class="post-body">
+                <div class="post-body col-md-10">
                     <div class="post-title"><a href="${ post.link }">${ post.title }</a>
                         <div class="post-date">${ formatTime(post.created_time) }</div>
                     </div>
