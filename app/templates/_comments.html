@@ -1,7 +1,7 @@
 <div class="comment-list">
     <div id="id-div-alert"></div>
     {% for comment in post.comments_sorted_by_time(post.comments) %}
-    <div class="comment-item">
+    <div class="comment-item" id="id-comment-item-{{ comment.id }}">
         <div class="comment-author col-md-2">
             <a href="#">
                 <img class="media-object round-portrait-64" src="{{ comment.author.gravatar(size=64) }}">
@@ -14,9 +14,9 @@
                 {{ comment.content }}
             </div>
             <div class="comment-footer">
-                <!--{% if current_user is not none and (current_user.is_admin() or current_user.username == comment.author.username)  %}-->
-                <!--<div class="comment-footer-item"><button class="button-delete btn" data-id="{{ post.id }}">删除</button></div>-->
-                <!--{% endif %}-->
+                {% if current_user is not none and (current_user.is_admin() or current_user.username == comment.author.username)  %}
+                <div class="comment-footer-item"><button class="comment-button-delete btn" data-id="{{ comment.id }}">删除</button></div>
+                {% endif %}
             </div>
         </div>
     </div>

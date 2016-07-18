@@ -15,8 +15,8 @@
     font-size: large;
     text-align: center;
     position: fixed;
-    bottom: 190px;
-    right: 32%;
+    bottom: 20px;
+    right: 20px;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #c0c0c0;
@@ -30,7 +30,7 @@
     color: inherit;
 }
 .back-to-top .fa {
-    margin-right: 0px;
+    margin-right: 0;
 }
 
 /*************** login ***************/
@@ -283,10 +283,10 @@ button.button-delete:active {
 .comment-list .comment-item .comment-author h4 {
     margin-top: 10px;
 }
-.comment-list .comment-item .comment-title .comment-date{
-    font-size: 80%;
+.comment-list .comment-item .comment-date{
+    font-size: 100%;
     font-weight: normal;
-    float: right;
+    text-align: right;
     color: #a0a0a0;
 }
 .comment-list .comment-item .comment-body {
@@ -318,4 +318,13 @@ button.button-delete:active {
 }
 .comment-list .comment-item .comment-body .comment-footer .comment-footer-item {
     float: right;
+}
+button.comment-button-delete {
+    border-radius: 5px;
+    background-color: #d9534f;
+    color: white;
+    font-size: 80%;
+}
+#id-comment-count {
+    display: inline;
 }

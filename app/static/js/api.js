@@ -144,3 +144,8 @@ bbs.commentAdd = function (form, success, error) {
     var url = '/api/comment/add';
     this.post(url, form, success, error);
 };
+
+bbs.commentDelete = function (form, success, error) {
+    var url = '/api/comment/delete';
+    this.post(url, form, success, error);
+};

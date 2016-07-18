@@ -45,3 +45,7 @@ class Comment(db.Model, Model):
             post=Post.post_by_id(self.post_id).json()
         )
         return d
+
+    @staticmethod
+    def comment_by_id(comment_id):
+        return Comment.query.get_or_404(comment_id)

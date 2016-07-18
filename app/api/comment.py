@@ -29,3 +29,22 @@ def comment_add():
         r['data'] = comment.json()
     print(r)
     return jsonify(r)
+
+
+@api.route('/comment/delete', methods=['POST'])
+def comment_delete():
+    user = current_user()
+    form = request.get_json()
+    comment_id = form.get('comment_id')
+    comment = Comment.comment_by_id(comment_id)
+    r = {
+        'success': True,
+        'message': '删除评论成功',
+    }
+    if user is not None and (user.is_admin() or user is comment.author):
+        comment.delete()
+    else:
+        r['success'] = False
+        r['message'] = '删除评论失败'
+    print(r)
+    return jsonify(r)
