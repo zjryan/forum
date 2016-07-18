@@ -137,7 +137,6 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex-grow: 1;
 }
 .post-list .post-item .post-author h4 {
     margin-top: 10px;
@@ -149,7 +148,6 @@ footer {
     color: #a0a0a0;
 }
 .post-list .post-item .post-body {
-    flex-grow: 19;
     padding: 8px;
     margin-left: 10px;
 }

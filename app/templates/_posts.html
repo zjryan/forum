@@ -2,13 +2,13 @@
     <div id="id-div-alert"></div>
     {% for post in Channel.posts_sorted_by_time(posts) %}
     <div class="post-item" id="id-post-item-{{ post.id }}">
-        <div class="post-author">
+        <div class="post-author col-md-2">
             <a href="#">
                 <img class="media-object round-portrait-64" src="{{ post.author.gravatar(size=64) }}">
             </a>
             <h4 class="media-heading">{{ post.author.username }}</h4>
         </div>
-        <div class="post-body">
+        <div class="post-body col-md-10">
             <div class="post-title"><a href="{{ url_for('controllers.post_view', id=post.id) }}">{{ post.title }}</a>
                 <div class="post-date">{{ post.created_time | format_time }}</div>
             </div>
