@@ -152,6 +152,9 @@ class User(db.Model, Model):
         )
         return d
 
+    def is_comment_author(self, comment):
+        return self.id == comment.author.id
+
 
 def current_user():
     id = session.get('user_id', None)

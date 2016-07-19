@@ -47,7 +47,7 @@ def post_delete():
     if user is not None or post.author is user or user.is_admin():
         r['success'] = True
         r['message'] = '删除成功'
-        r['next'] = url_for('index')
+        r['next'] = url_for('controllers.index')
         post.delete()
     else:
         abort(401)

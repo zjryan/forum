@@ -1,11 +1,9 @@
-# encoding: utf-8
-
-from app import app
+from . import controllers
 
 import time
 
 
-@app.template_filter('format_time')
+@controllers.app_template_filter('format_time')
 def format_time(timestamp):
     format = '%Y/%m/%d %H:%M:%S'
     t = time.localtime(timestamp)
@@ -13,7 +11,7 @@ def format_time(timestamp):
     return ft
 
 
-@app.template_filter('from_now')
+@controllers.app_template_filter('from_now')
 def from_now(timestamp):
     now = time.time()
     delta_time = now - timestamp

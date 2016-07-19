@@ -14,7 +14,7 @@
                 {{ comment.content }}
             </div>
             <div class="comment-footer">
-                {% if current_user is not none and (current_user.is_admin() or current_user.username == comment.author.username)  %}
+                {% if current_user is not none and (current_user.is_admin() or current_user.is_comment_author(comment))  %}
                 <div class="comment-footer-item"><button class="comment-button-delete btn" data-id="{{ comment.id }}">删除</button></div>
                 {% endif %}
             </div>

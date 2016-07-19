@@ -5,9 +5,13 @@ from flask import url_for
 from flask import request
 from flask import jsonify
 from flask import redirect
+
 from ..models import User
+from ..models import Post
+from ..models import Comment
 from ..decorators import login_required
 from ..utilities import log
+
 
 
 @accounts.route('/')
@@ -27,7 +31,7 @@ def login():
     }
     if user is not None and user.login_valid(form):
         r['success'] = True
-        r['next'] = request.args.get('next', url_for('index'))
+        r['next'] = request.args.get('next', url_for('controllers.index'))
         r['message'] = '登录成功'
         session.permanent = True
         session['user_id'] = user.id
@@ -42,7 +46,7 @@ def login():
 @login_required
 def logout():
     session.clear()
-    return redirect(url_for('index'))
+    return redirect(url_for('controllers.index'))
 
 
 @accounts.route('/register', methods=['POST'])
@@ -59,10 +63,23 @@ def register():
         user.save()
         log('注册成功')
         r['success'] = True
-        r['next'] = request.args.get('next', url_for('index'))
+        r['next'] = request.args.get('next', url_for('controllers.index'))
         session.permanent = True
         session['user_id'] = user.id
     else:
         log('注册失败', form)
         r['success'] = False
     return jsonify(r)
+
+
+@accounts.route('/profile/<int:id>')
+def profile_view(id):
+    user = User.user_by_id(id)
+    posts = user.posts
+    comments = user.comments
+    d = dict(
+        user=user,
+        posts=posts,
+        comments=comments,
+    )
+    return render_template('profile.html', **d)

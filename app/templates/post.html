@@ -21,7 +21,7 @@
                         ${ comment.content }
                     </div>
                     <div class="comment-footer">
-                        {% if current_user is not none and (current_user.is_admin() or current_user.username == comment.author.username)  %}
+                        {% if current_user is not none and (current_user.is_admin() or is_comment_author) %}
                         <div class="comment-footer-item"><button class="comment-button-delete btn" data-id="${ comment.id }">删除</button></div>
                         {% endif %}
                     </div>
@@ -40,7 +40,6 @@
     var increaseCommentCount = function () {
         var self = $('#id-comment-count');
         var count =  parseInt(self.text());
-        console.log(count);
         count += 1;
         self.text(count);
     };
@@ -48,7 +47,6 @@
     var decreaseCommentCount = function () {
         var self = $('#id-comment-count');
         var count =  parseInt(self.text());
-        console.log(count);
         count -= 1;
         self.text(count);
     };
