@@ -10,3 +10,5 @@ sys.path.insert(0, abspath(dirname(__file__)))
 
 from app import init_app
 application = init_app()
+
+# from app import app as application
