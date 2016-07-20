@@ -6,7 +6,7 @@
 }
 .side-content {
     position: fixed;
-    width: 25%;
+    min-width: 350px;
 }
 .back-to-top {
     float: right;
